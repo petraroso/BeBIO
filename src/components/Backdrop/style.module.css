@@ -1,0 +1,245 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #1a191983;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal {
+  position: fixed;
+  width: 60vw;
+  height: 70vh;
+  top: 20%;
+  left: 20%;
+  background-color: white;
+  z-index: 11;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: scroll;
+
+  box-shadow: 0px 0px 8px 0 lightgray;
+}
+.wholeSite {
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  padding-bottom: 50px;
+  box-shadow: 0px 0px 8px 0 lightgray;
+
+  -webkit-column-break-inside: avoid;
+  backface-visibility: hidden;
+}
+.index {
+  display: flex;
+}
+.rightDiv {
+  padding-left: 30px;
+  padding-right: 50px;
+}
+.title {
+  font-size: 27px;
+  margin-top: 50px;
+  font-weight: bold;
+}
+.timesIcon {
+  position: absolute;
+  top: 2%;
+  right: 50px;
+  transition: transform 0.2s;
+  z-index: 2;
+  cursor: pointer;
+  padding: 6px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 15%;
+}
+.timesIcon:hover {
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.2);
+}
+.image {
+  z-index: -1;
+  height: 320px;
+  width: 250px;
+}
+.ingredientsTitle {
+  font-weight: bolder;
+  font-size: 19px;
+  margin-bottom: 0%;
+  margin-top: 20px;
+}
+.ingredients{
+  text-align: justify;
+}
+.commentsTitle {
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 50px;
+}
+.buttonDiv {
+  display: flex;
+  flex-grow: 1;
+}
+.textarea3 {
+  background-color: white;
+
+  color: lightslategray;
+  padding: 1% 50px;
+  text-align: left;
+  text-decoration: none;
+
+  display: flex;
+  flex-grow: 1;
+
+  font-size: 15px;
+  cursor: auto;
+
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 2%;
+
+  border-color: gray;
+  border-radius: 10px;
+
+  outline: none;
+  resize: none;
+}
+.commentButtons {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 50px;
+}
+.button1 {
+  background-color: white;
+  color: black;
+  text-align: center;
+
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+
+  box-shadow: 0px 0px 8px 0 lightgray;
+  font-weight: bold;
+  outline: none;
+  transition: transform 0.2s;
+}
+.button2 {
+  background-color: #696f45;
+  color: white;
+  text-align: center;
+
+  margin-bottom: 10px;
+  margin-right: 4px;
+  cursor: pointer;
+  width: 130px;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+
+  box-shadow: 0px 0px 8px 0 lightgray;
+  font-weight: bold;
+  outline: none;
+  transition: transform 0.2s;
+}
+.button1:hover {
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.05);
+}
+.button2:hover {
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.05);
+}
+.readMoreButton {
+  width: 30%;
+  background-color: white;
+
+  border-radius: 20px;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+
+  font-size: 16px;
+  border: none;
+  box-shadow: 0px 0px 8px 0 lightgray;
+}
+.readmore {
+  display: flex;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+.readMoreButton:hover {
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.05);
+}
+@media only screen and (max-width: 930px) {
+  .modal {
+    width: 80vw;
+    left: 10%;
+  }
+  .image {
+    height: 300px;
+    width: 230px;
+  }
+  .title {
+    font-size: 22px;
+  }
+  .button2,
+  .button1 {
+    font-size: 18px;
+    padding: 10px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .modal {
+    width: 100vw;
+    left: 0%;
+  }
+  .index {
+    flex-direction: column;
+  }
+  .image {
+    height: 300px;
+    width: auto;
+  }
+  .timesIcon {
+    right: 20px;
+  }
+  .title {
+    margin-top: 20px;
+  }
+  .rightDiv {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .textarea3 {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .commentsTitle {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .commentButtons {
+    margin-right: 10px;
+  }
+  .readMoreButton {
+    margin-bottom: 0px;
+  }
+  .commentBody {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

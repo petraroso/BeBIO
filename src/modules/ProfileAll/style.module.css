@@ -1,0 +1,25 @@
+.text {
+  display: flex;
+  justify-content: center;
+  font-size: 27px;
+  font-weight: bold;
+  line-height: 1.4;
+  text-shadow: 0 0 15px white;
+  margin-top: 17%;
+  margin-bottom: 17%;
+}
+@media only screen and (max-width: 930px) {
+  .text {
+    font-size: 22px;
+    line-height: 1.1;
+    min-height: 50vh;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .text {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

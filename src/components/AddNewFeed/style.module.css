@@ -1,0 +1,157 @@
+.container {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 50px;
+  margin-bottom: 170px;
+}
+.add {
+  display: flex;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+.pictureDiv {
+  margin-bottom: 30px;
+}
+.date {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.modifyDescription {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.textareaDescription {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.text {
+  display: flex;
+  flex-grow: 1;
+}
+.textarea2 {
+  background-color: white;
+
+  color: lightslategray;
+  padding: 1% 50px;
+  text-align: left;
+  text-decoration: none;
+
+  display: flex;
+  flex-grow: 1;
+  height: max-content;
+
+  font-size: 15px;
+  cursor: auto;
+
+  border-color: gray;
+  border-radius: 10px;
+
+  outline: none;
+  resize: none;
+}
+.textarea2:focus {
+  box-shadow: 0px 0px 8px 0 #28a535;
+  border-color: #28a535;
+}
+.charNumber {
+  display: flex;
+  justify-content: flex-end;
+  color: gray;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+.insert {
+  background-color: #696f45;
+  color: white;
+  text-align: center;
+
+  padding: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+
+  box-shadow: 0px 0px 8px 0 lightgray;
+  outline: none;
+  transition: transform 0.2s;
+}
+.insert:hover {
+  background-color: #28a535;
+}
+
+.button1 {
+  display: flex;
+  align-items: center;
+  background-color: white;
+
+  width: max-content;
+  font-size: 28px;
+  margin-right: 20px;
+
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0px 0px 8px 0 lightgray;
+  padding: 20px;
+  cursor: pointer;
+  outline: 0;
+}
+.button1:hover {
+  background-color: red;
+  color: white;
+  box-shadow: none;
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.05);
+}
+.button2 {
+  display: flex;
+  align-items: center;
+  background-color: #696f45;
+  color: white;
+  width: max-content;
+  font-size: 28px;
+
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0px 0px 8px 0 lightgray;
+  padding: 20px;
+  cursor: pointer;
+  outline: 0;
+}
+.button2:hover {
+  background-color: #28a535;
+  color: white;
+  box-shadow: none;
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.05);
+}
+.submitButtons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+@media only screen and (max-width: 930px) {
+  .add {
+    font-size: 22px;
+  }
+  .textareaDescription {
+    font-size: 18px;
+  }
+  .modifyDescription {
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .container {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  .charNumber {
+    font-size: 13px;
+  }
+}

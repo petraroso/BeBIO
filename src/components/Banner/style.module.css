@@ -1,0 +1,134 @@
+.banner {
+  height: 95vh;
+
+  background-image: url("../../images/banner.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.title {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-flow: column;
+
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  text-align: center;
+  box-shadow: inset 2000px 0 0 rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  background: transparent;
+  padding: 4%;
+}
+
+.title h1 {
+  color: #5c613e;
+  font-size: 3em;
+  letter-spacing: 1.4px;
+  line-height: 1.4;
+  text-shadow: 0 0 15px white;
+  text-align: left;
+  margin: 0;
+}
+
+.description {
+  font-size: 32px;
+  letter-spacing: 1.3px;
+  line-height: 1.4;
+  text-shadow: 0 0 15px rgb(255, 255, 255);
+  text-align: left;
+  padding-right: 20%;
+}
+.section {
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-30%);
+  display: flex;
+}
+
+
+.button1 {
+  background-color: #696f45;
+  color: white;
+
+  height: 72px;
+  width: max-content;
+  font-size: 28px;
+  cursor: pointer;
+  margin-right: 20px;
+  padding: 20px;
+
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px 0 lightgray;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+.button1:hover {
+  background-color: #28a535;
+  color: white;
+  box-shadow: none;
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.05);
+}
+.button2 {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: black;
+
+  height: 72px;
+  width: max-content;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 20px;
+
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+
+.button2:hover {
+  text-decoration: underline;
+}
+
+
+@media only screen and (max-width: 930px) {
+  .banner {
+    height: 70vh;
+  }
+  .title {
+    top: 45%;
+  }
+  .title h1 {
+    font-size: 32px;
+  }
+  .description {
+    font-size: 22px;
+  }
+  .section {
+    top: 68%;
+  }
+  .button1,
+  .button2 {
+    height: auto;
+    font-size: 18px;
+    padding: 10px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .title {
+    margin-right: 10px;
+  }
+  .section {
+    flex-direction: column;
+    align-items: center;
+    top: 68%;
+  }
+  
+}

@@ -1,0 +1,16 @@
+.titleImage {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+.fluid{
+  border-radius: 90%;
+  height: 50px;
+  width: 50px;
+}
+@media only screen and (max-width: 600px) {
+  .titleImage {
+    height: 100px;
+    width: 100px;
+  }
+}

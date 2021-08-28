@@ -1,0 +1,21 @@
+.SocialLinks a {
+  width: 50px;
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.facebook {
+  color: #1877f2;
+}
+.instagram {
+  color: #c32aa3;
+}
+.twitter {
+  color: #1da1f2;
+}
+@media only screen and (max-width: 600px) {
+  .SocialLinks a {
+    display: flex;
+    flex-direction: column;
+  }
+}

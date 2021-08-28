@@ -1,0 +1,27 @@
+.blog3 {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.name {
+  font-size: 16px;
+  margin-left: 5px;
+}
+.comment {
+  font-size: 16px;
+  margin-left: 3px;
+}
+.userImage {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%;
+}
+@media only screen and (max-width: 700px) {
+  .blog3 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}

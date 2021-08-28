@@ -1,0 +1,306 @@
+.container {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  flex-direction: column;
+}
+.container header {
+  grid-column: 2/3;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin-top: 5%;
+}
+header .prev {
+  display: flex;
+  position: relative;
+  min-height: 60px;
+}
+header .next {
+  display: flex;
+  position: relative;
+  min-height: 60px;
+}
+header .button3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+  text-align: center;
+
+  cursor: pointer;
+  width: 130px;
+  padding: 20px;
+  margin-top: 20px;
+
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+
+  box-shadow: 0px 0px 8px 0 lightgray;
+
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+header .button4 {
+  position: absolute;
+  right: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+  text-align: center;
+
+  cursor: pointer;
+  width: 130px;
+  padding: 20px;
+  margin-top: 20px;
+
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+
+  box-shadow: 0px 0px 8px 0 lightgray;
+
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+.button3:hover {
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.05);
+}
+.button4:hover {
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.05);
+}
+.wholeBlog {
+  grid-column: 2/3;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 8px 0 lightgray;
+}
+.imageAndIcon {
+  position: relative;
+}
+.image {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  height: 450px;
+}
+.bookmarkIcon {
+  position: absolute;
+  top: 9%;
+  right: 5%;
+  transition: transform 0.2s;
+  padding: 6px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 15%;
+  cursor: pointer;
+}
+.bookmarkIcon:hover {
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.2);
+}
+.head {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr;
+}
+.blog1 .h2 {
+  grid-column: 2/3;
+  justify-self: center;
+  align-self: center;
+  font-size: x-large;
+}
+.rating {
+  grid-column: 3/4;
+  justify-self: center;
+  align-self: center;
+  cursor: pointer;
+}
+.wholeBlog article {
+  margin: 50px;
+  font-size: 18px;
+  line-height: 1.75;
+  text-align: justify;
+}
+.commentButtons {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 50px;
+}
+.button1 {
+  background-color: white;
+  color: black;
+  text-align: center;
+
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+
+  box-shadow: 0px 0px 8px 0 lightgray;
+  font-weight: bold;
+  outline: none;
+  transition: transform 0.2s;
+}
+.button2 {
+  background-color: #696f45;
+  color: white;
+  text-align: center;
+
+  margin-bottom: 10px;
+  margin-right: 4px;
+  cursor: pointer;
+  width: 130px;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+
+  box-shadow: 0px 0px 8px 0 lightgray;
+  font-weight: bold;
+  outline: none;
+  transition: transform 0.2s;
+}
+.button1:hover {
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.05);
+}
+.button2:hover {
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.05);
+}
+.commentsTitle {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.buttonDiv {
+  display: flex;
+  flex-grow: 1;
+}
+.textarea1 {
+  background-color: white;
+
+  color: lightslategray;
+  padding: 1% 50px;
+  text-align: left;
+  text-decoration: none;
+
+  display: flex;
+  flex-grow: 1;
+
+  font-size: 15px;
+  cursor: auto;
+
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 2%;
+
+  border-color: gray;
+  border-radius: 10px;
+
+  outline: none;
+  resize: none;
+}
+.readMoreButton {
+  width: 30%;
+  background-color: white;
+
+  border-radius: 20px;
+  padding: 10px;
+
+  font-weight: bold;
+  margin-bottom: 50px;
+  cursor: pointer;
+
+  font-size: 16px;
+  border: none;
+  box-shadow: 0px 0px 8px 0 lightgray;
+}
+.readmore {
+  display: flex;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+.readMoreButton:hover {
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.05);
+}
+.backButton {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.links {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 70px;
+  margin-left: 20%;
+  text-align: left;
+}
+.links:hover {
+  text-decoration: underline;
+}
+@media only screen and (max-width: 930px) {
+  .container {
+    grid-template-columns: 10% 80% 10%;
+  }
+  .links {
+    font-size: 18px;
+    margin-left: 10%;
+    margin-top: 0px;
+    margin-bottom: 50px;
+  }
+  .head .h2 h2 {
+    font-size: 22px;
+  }
+  header .button3,
+  header .button4 {
+    font-size: 18px;
+    padding: 10px;
+  }
+  .button2,
+  .button1 {
+    font-size: 18px;
+    padding: 10px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .container {
+    grid-template-columns: 10px auto 10px;
+  }
+  .wholeBlog {
+    box-shadow: 0px 0px 0px 0 lightgray;
+  }
+  .image {
+    height: 300px;
+  }
+  .wholeBlog article {
+    margin: 0px;
+  }
+  .textarea1 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .commentsTitle {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .commentButtons {
+    margin-right: 0px;
+  }
+  .readMoreButton {
+    margin-bottom: 0px;
+  }
+  .links {
+    margin-left: 10px;
+    margin-top: 0px;
+  }
+}

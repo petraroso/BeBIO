@@ -1,0 +1,10 @@
+.hottestSection{
+    display:grid;
+    position:relative;
+    left:5%;
+    
+}
+.posts{
+    display:flex;
+    justify-content: space-around;
+}

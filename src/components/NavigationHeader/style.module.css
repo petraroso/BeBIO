@@ -1,0 +1,117 @@
+.container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: 0% 100% 0%;
+  background-color: #e5e6de;
+  box-shadow: 0px 0px 8px 0 gray;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.navigationHeader {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  height: 80px;
+  display: grid;
+  grid-template-columns: 25% 69% 6%;
+  grid-template-rows: 1fr;
+}
+.navigationHeader > .logo1 {
+  grid-column-start: 1;
+}
+.navigation {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  align-self: center;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  color: #696f45;
+}
+.profileNav {
+  grid-column-end: 4;
+  justify-self: flex-end;
+  align-self: center;
+}
+
+.hamburger {
+  display: none;
+  border: transparent;
+  background-color: transparent;
+}
+.links {
+  list-style: none;
+  text-transform: uppercase;
+  background-color: white;
+  padding: 0px;
+  padding-bottom: 10px;
+  height: max-content;
+  width: 100%;
+  font-size: 18px;
+  position: absolute;
+  left: 0%;
+  top: 80px;
+  animation: animateToggle 0.2s ease-in-out;
+  margin-top: 0px;
+}
+.logo1 {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 1fr;
+  align-items: center;
+}
+.div1 {
+  grid-column-start: 1;
+}
+.div2 {
+  grid-column-start: 2;
+  justify-self: start;
+}
+.logoText {
+  font-size: 40px;
+  font-weight: bolder;
+  color: #696f45;
+}
+
+@keyframes animateToggle {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.links > * {
+  padding-top: 10px;
+}
+.top {
+  font-size: 50px;
+}
+@media only screen and (max-width: 1050px) {
+  .hamburger {
+    display: inline-block;
+    opacity: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .navigationHeader {
+    grid-template-columns: 30% 64% 6%;
+  }
+  .navigation {
+    display: none;
+  }
+}
+@media only screen and (max-width: 930px) {
+  .logo1 {
+    margin-left: -45px;
+  }
+  .profileNav {
+    margin-right: -45px;
+  }
+}
+@media only screen and (max-width: 730px) {
+  .logoText {
+    display: none;
+  }
+}

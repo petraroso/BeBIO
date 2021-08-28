@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 5%;
+
+  margin-top: 110px;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 70px;
+}
+.reviewPost {
+  width: 30%;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 8px 0 lightgray;
+  transition: transform 0.2s;
+
+  -webkit-column-break-inside: avoid;
+  backface-visibility: hidden;
+}
+.reviewPost:hover {
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.03);
+  cursor: pointer;
+}
+.bump {
+  width: 100%;
+}
+.image {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  z-index: -1;
+  height: 250px;
+}
+.rating {
+  position: absolute;
+  top: 215px;
+  right: 20px;
+  z-index: 2;
+}
+.title {
+  font-size: 27px;
+  margin: 20px;
+  font-weight: bold;
+}
+@media only screen and (max-width: 930px) {
+  .container {
+    margin-top: 70px;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .title {
+    font-size: 22px;
+    margin: 10px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .container {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .container {
+    column-gap: 6%;
+  }
+  .reviewPost {
+    width: 47%;
+    padding-bottom: 20px;
+  }
+  .image {
+    height: 200px;
+  }
+  .rating {
+    top: 180px;
+    right: 10px;
+  }
+}
