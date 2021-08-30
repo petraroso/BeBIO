@@ -76,7 +76,7 @@ const BlogContainer = ({ tags }) => {
           <div className={styles.container}>
             <div className={styles.post}>
               <div className={styles.imageDiv}>
-             <p>here comes image</p>
+              <img src = {item.imageURL.prop} className={styles.image}></img>
               </div>
               <div className={styles.body}>
                 <div className={styles.tags}> #{item.tag}</div>
@@ -151,7 +151,7 @@ const BlogContainer = ({ tags }) => {
           <div className={styles.container}>
             <div className={styles.post}>
               <div className={styles.imageDiv}>
-             <p>here comes image</p>
+              <img src = {item.imageURL.prop} className={styles.image}></img>
               </div>
               <div className={styles.body}>
                 <div className={styles.tags}> #{item.tag}</div>

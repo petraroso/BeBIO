@@ -48,7 +48,7 @@ const [items, setItems] = useState([])
   let firstVar
 
   let count = 0;
-  let z = "";
+
 
   const listItem = useItems()
 
@@ -64,10 +64,8 @@ const [items, setItems] = useState([])
       </div>
       <section className={styles.container}>
         {items.map(item => {
-          if (item.authorsName !== name) {
+          if (item.title !== name) {
             count = count + 1;
-          
-         
             return (
               <>
                 <div className={styles.profilePost}>
@@ -81,13 +79,7 @@ const [items, setItems] = useState([])
                     />
                   </div>
                   <Link to={`/profilePosts/${item.id}`}>
-                    <Img
-                      alt="Uploaded Images"
-                      height="300"
-                      width="400"
-                      src = {item.imageURL.prop}
-                      className={styles.image}
-                    />
+                  <img src = {item.imageURL.prop} className={styles.image}></img>
                   </Link>
                   <div className={styles.body}>
                     <div className={styles.title}>
