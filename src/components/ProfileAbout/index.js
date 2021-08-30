@@ -5,7 +5,7 @@ import { myLocalStorage } from "../../helper"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBookmark } from "@fortawesome/free-solid-svg-icons"
 import { faEdit } from "@fortawesome/free-solid-svg-icons"
-import {Link} from "gatsby"
+import {Link, navigate} from "gatsby"
 
 const ProfileAbout = ({ name, total }) => {
   const followers = myLocalStorage.getItem("follower")
@@ -30,7 +30,7 @@ const ProfileAbout = ({ name, total }) => {
           <div className={styles.nameAndEdit}>
             <h2 className={styles.username}>{name}</h2>
             <div className={styles.editDiv}>
-              <FontAwesomeIcon icon={faEdit} size="2x" color="#696f45" />
+              <FontAwesomeIcon icon={faEdit} onClick={() =>navigate("/updateprofile")}size="2x" color="#696f45" />
             </div>
           </div>
           <div className={styles.bookmarkDiv}>

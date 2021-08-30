@@ -18,6 +18,12 @@ export function AuthProvider({ children }) {
   function login(email, password) {
     return auth.signInWithEmailAndPassword(email, password)
   }
+  function updateEmail(email){
+    return currentUser.updateEmail(email)
+  }
+  function updatePassword(password){
+    return currentUser.updatePassword(password)
+  }
   function logout() {
     return auth.signOut()
   }
@@ -34,6 +40,8 @@ export function AuthProvider({ children }) {
     signup,
     login,
     logout,
+    updateEmail,
+    updatePassword
   }
   return (
     <AuthContext.Provider value={value}>
