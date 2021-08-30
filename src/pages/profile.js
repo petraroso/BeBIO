@@ -1,14 +1,16 @@
 import React from "react"
-import HeaderFooterLayout from '../layouts/headerFooter'
-import ProfileAll from '../modules/ProfileAll'
-
+import HeaderFooterLayout from "../layouts/headerFooter"
+import ProfileAll from "../modules/ProfileAll"
+import { AuthProvider } from "../components/Contexts/AuthContext"
 
 const Profile = () => (
-    <main>
-    <HeaderFooterLayout activeTab = "Profile">
-        <ProfileAll/>
+  <main>
+    <HeaderFooterLayout activeTab="Profile">
+      <AuthProvider>
+        <ProfileAll />
+      </AuthProvider>
     </HeaderFooterLayout>
-    </main>
+  </main>
 )
 
 export default Profile

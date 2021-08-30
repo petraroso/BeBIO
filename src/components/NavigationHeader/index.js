@@ -10,15 +10,30 @@ import { IoClose } from "react-icons/io5"
 import { Link } from "gatsby"
 import { navs as navTabs } from "../../constants/const"
 import LogoImage from "../Images/LogoImage"
-
+import { useAuth } from "../Contexts/AuthContext"
+import { set } from "lodash"
+import { navigate } from "@reach/router"
 
 //import { colors } from "react-select/src/theme"
 
 const NavigationHeader = ({ activeTab }) => {
   const loggedIn = () => !!myLocalStorage.getItem("loggedIn")
+  const [error, setError]=useState("")
+  const {currentUser, logout} =useAuth()
 
   if (!loggedIn()) {
     myLocalStorage.removeItem("follower")
+    async function handleLogout(){
+      setError('')
+
+      try{
+        await logout()
+        
+      }catch {
+        setError('Failed to log out')
+      }
+
+    }
   }
 
   const profile = "Profile"
