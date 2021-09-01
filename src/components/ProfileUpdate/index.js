@@ -6,7 +6,6 @@ import { myLocalStorage } from "../../helper"
 import { useAuth } from "../Contexts/AuthContext"
 
 const ProfileUpdate = () => {
-  
   const [username, setUserName] = useState(myLocalStorage.getItem("loggedIn"))
   //const [password, setPassword] = useState()
   //const [email, setEmail] = useState("")
@@ -17,36 +16,38 @@ const ProfileUpdate = () => {
   //const usernameRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmationRef = useRef()
-  const { currentUser,updatePassword, updateEmail } = useAuth()
+  const { currentUser, updatePassword, updateEmail } = useAuth()
   const [passwordError, setPasswordError] = useState("")
   const [passwordLoading, setPasswordLoading] = useState(false)
 
-   function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault()
 
     if (passwordRef.current.value !== passwordConfirmationRef.current.value)
       return setPasswordError("Passwords do not match")
 
-      const promises = []
-      setPasswordLoading(true)
-      setPasswordError("")
-      if(emailRef.current.value !== currentUser.emailRef){
-        promises.push(updateEmail(emailRef.current.value))
-      }
-      if(passwordRef.current.value){
-        promises.push(updatePassword(passwordRef.current.value))
-      }
+    const promises = []
+    setPasswordLoading(true)
+    setPasswordError("")
+    if (emailRef.current.value !== currentUser.emailRef) {
+      promises.push(updateEmail(emailRef.current.value))
+    }
+    if (passwordRef.current.value) {
+      promises.push(updatePassword(passwordRef.current.value))
+    }
 
-      Promise.all(promises).then(()=>{
+    Promise.all(promises)
+      .then(() => {
         navigate("/")
-      }).catch(()=>{
+      })
+      .catch(() => {
         setPasswordError("Failed to update account")
-      }).finally(()=>{
+      })
+      .finally(() => {
         setPasswordLoading(false)
       })
   }
 
-   
   return (
     <main
       className={styles.background}
@@ -62,22 +63,11 @@ const ProfileUpdate = () => {
           <input
             name="email"
             type="email"
-            required 
-            placeholder={currentUser.email}
+            required
+            defaultValue={currentUser.email}
             ref={emailRef}
             //onChange={e => setEmail(e.target.value)}
           ></input>
-        </section>
-
-        <section className={styles.field}>
-          <label htmlFor="username">Username</label>
-          <input
-            name="username"
-            //ref={usernameRef}
-            placeholder = {username}
-            required
-            onChange={e => setUserName(e.target.value)}
-          />
         </section>
 
         <section className={styles.field}>
@@ -85,7 +75,6 @@ const ProfileUpdate = () => {
           <input
             name="password"
             type="password"
-           
             placeholder="Leave blank to keep the same"
             ref={passwordRef}
             //onChange={e => setPassword(e.target.value)}
@@ -97,7 +86,6 @@ const ProfileUpdate = () => {
           <input
             name="password"
             type="password"
-      
             placeholder="Leave blank to keep the same"
             ref={passwordConfirmationRef}
             //onChange={e => setPassword(e.target.value)}
@@ -123,7 +111,7 @@ const ProfileUpdate = () => {
         </div>
       </form>
       <span className={styles.spanclass}>
-        <Link to = {"/profile"}>Cancel</Link>
+        <Link to={"/profile"}>Cancel</Link>
       </span>
 
       <div className={styles.area}>

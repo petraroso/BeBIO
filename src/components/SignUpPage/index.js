@@ -6,9 +6,11 @@ import { myLocalStorage } from "../../helper"
 import { useAuth } from "../Contexts/AuthContext"
 
 const SignUpPage = () => {
-  const [username, setUserName] = useState()
+  const [username, setUserName] = useState("")
   //const [password, setPassword] = useState()
-  //const [email, setEmail] = useState("")
+  const [email, setEmail] = useState("")
+  const [profileImageURL, setProfileImageURL] = useState("")
+  const [userAbout, setUserAbout] = useState("")
   //const [error, setError] = useState(false)
   //const [loading, setLoading] = useState(false)
 
@@ -30,6 +32,24 @@ const SignUpPage = () => {
       setPasswordLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
       myLocalStorage.setItem("loggedIn", username)
+
+      firebase
+        .firestore()
+        .collection("users")
+        .add({
+          username,
+          email,
+          profileImageURL,
+          userAbout,
+        })
+        //.then will reset the form to nothing/set placeholders
+        .then(
+          () => setUserName(""),
+          setEmail(""),
+          setProfileImageURL(""),
+          setUserAbout("")
+        )
+
       return navigate("/profile")
     } catch {
       setPasswordError("Failed to create an account")
@@ -53,7 +73,7 @@ const SignUpPage = () => {
             name="email"
             type="email"
             ref={emailRef}
-            //onChange={e => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
           ></input>
         </section>
 

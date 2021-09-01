@@ -1,0 +1,98 @@
+import React, { Component } from "react"
+import firebase from "../Firebase/firebase"
+import styles from "./style.module.css"
+import { getStorage, ref } from "firebase/storage"
+
+export default class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      image: null,
+      progress: 0,
+      downloadURL: null,
+    }
+  }
+
+  handleChange = e => {
+    if (e.target.files[0]) {
+      this.setState({
+        image: e.target.files[0],
+      })
+    }
+
+    // console.log(e.target.files[0])
+  }
+
+  handleUpload = (e) => {
+    // console.log(this.state.image);
+    let file = this.state.image
+    var storage = firebase.storage()
+    var storageRef = storage.ref()
+    var uploadTask = storageRef.child("folder/" + file.name).put(file)
+
+    this.props.parentCallback(this.state.downloadURL);
+    e.preventDefault();
+    
+    uploadTask.on(
+      firebase.storage.TaskEvent.STATE_CHANGED,
+      snapshot => {
+        var progress =
+          Math.round(snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        this.setState({ progress })
+      },
+      error => {
+        throw error
+      },
+      () => {
+        // uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) =>{
+
+        uploadTask.snapshot.ref.getDownloadURL().then(url => {
+          this.setState({
+            downloadURL: url,
+          })
+        })
+        document.getElementById("file").value = null
+      }
+    )
+
+
+    /*
+console.log("hh");
+ console.log(file);
+ storage.ref('file').child(this.state.image.name).getDownloadURL().then(url => {
+    firebase
+    .firestore()
+    .collection('notes')
+    .add({
+      downloadURL: url
+    })
+    .then(() => {
+      this.setState('')
+    })
+});*/
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h4>upload image</h4>
+        <label>
+          Choose file
+          <input type="file" id="file" onChange={this.handleChange} />
+        </label>
+
+        {this.state.progress}
+        <button className="button" onClick={this.handleUpload}>
+          Upload
+        </button>
+        <img
+          className="ref"
+          src={this.state.downloadURL || "https://via.placeholder.com/400x300"}
+          alt="Uploaded Images"
+          height="300"
+          width="400"
+        />
+      </div>
+    )
+  }
+}
