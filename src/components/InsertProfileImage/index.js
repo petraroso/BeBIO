@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import firebase from "../Firebase/firebase"
 import styles from "./style.module.css"
 import { getStorage, ref } from "firebase/storage"
+import UpdateUserInfo from "../UpdateUserInfo"
 
 export default class App extends Component {
   constructor() {
@@ -30,7 +31,8 @@ export default class App extends Component {
     var storageRef = storage.ref()
     var uploadTask = storageRef.child("folder/" + file.name).put(file)
 
-    this.props.parentCallback(this.state.downloadURL);
+    
+    
     e.preventDefault();
     
     uploadTask.on(
@@ -54,22 +56,6 @@ export default class App extends Component {
         document.getElementById("file").value = null
       }
     )
-
-
-    /*
-console.log("hh");
- console.log(file);
- storage.ref('file').child(this.state.image.name).getDownloadURL().then(url => {
-    firebase
-    .firestore()
-    .collection('notes')
-    .add({
-      downloadURL: url
-    })
-    .then(() => {
-      this.setState('')
-    })
-});*/
   }
 
   render() {
@@ -85,6 +71,7 @@ console.log("hh");
         <button className="button" onClick={this.handleUpload}>
           Upload
         </button>
+        
         <img
           className="ref"
           src={this.state.downloadURL || "https://via.placeholder.com/400x300"}
@@ -92,6 +79,11 @@ console.log("hh");
           height="300"
           width="400"
         />
+        
+        <UpdateUserInfo 
+        prop={this.state.downloadURL} 
+        progress = {this.state.progress}
+         />
       </div>
     )
   }

@@ -5,9 +5,12 @@
  */
 
 // You can delete this file if you're not using it
+
+require('dotenv').config({ encoding: 'utf8' })
 const path = require('path')
  
 exports.createPages = async ({ graphql, actions }) => {
+
   const raw = await graphql(`query {
     allContentfulBlogPost {
       nodes {
@@ -86,6 +89,31 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
 }`)
+
+/*
+    firebase
+      .firestore() //access firestore
+      .collection("posts") //access "items" collection
+      .onSnapshot(snapshot => {
+        //You can "listen" to a document with the onSnapshot() method.
+        const listItems = snapshot.docs.map(doc => ({
+          component:
+          path.resolve(`./src/layouts/blog.js`),
+          context:{ 
+            id: doc.id, //id and data pushed into items array
+          ...doc.data(), //spread operator merges data to id.}
+          //map each document into snapshot
+          next: index < array.length ? array[index + 1] : null,
+      prev: index > 0 ? array[index - 1] : null
+         
+        },
+        path: `blogPosts/${doc.tag}`,
+    slug: `blogPosts/${doc.tag}`
+      }))
+
+      })
+*/
+
  
   const res = raw.data.allContentfulBlogPost.nodes
  

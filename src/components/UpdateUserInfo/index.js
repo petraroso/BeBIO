@@ -4,23 +4,25 @@ import firebase from "../Firebase/firebase"
 import styles from "./style.module.css"
 //import { myLocalStorage } from "../../helper"
 import { useAuth } from "../Contexts/AuthContext"
-import InsertProfileImage from "../InsertProfileImage"
+//import { navigate } from "gatsby"
 
-const UpdateUserInfo = () => {
+const UpdateUserInfo = ({ prop, progress }) => {
   const { currentUser } = useAuth()
+
+  //const [loading, setLoading] = useState(false)
   const [username, setUsername] = useState("")
   //const [profileImageURL, setProfileImageURL] = useState("")
   const [userAbout, setUserAbout] = useState("")
-  const [loading, setLoading] = useState(false)
-  const [insertImage, setInsertImage] = useState(false)
-  const [imageURL, setImageURL] = useState(null)
-
-  const handleCallback = downloadURL => {
-    setImageURL(downloadURL)
+  //const [imageURL, setImageURL] = useState(null)
+  //const [updateButton1, setUpdateButton1] = useState(false)
+  const [updateButton2, setUpdateButton2] = useState(false)
+  const [updateButton3, setUpdateButton3] = useState(false)
+    
+  const showUpdateButton2 = () => {
+    setUpdateButton2(true)
   }
-
-  const showInsertImage = () => {
-    setInsertImage(true)
+  const showUpdateButton3 = () => {
+    setUpdateButton3(true)
   }
 
   const useItems = () => {
@@ -43,50 +45,59 @@ const UpdateUserInfo = () => {
     return items
   }
   const listItem = useItems()
-  /*
- {
-  listItem.map(item => {
-    if (item.email === currentUser.email) {
-      setUsername(item.username)
-      setImageURL(item.profileImage)
-      setUserAbout(item.userAbout)
-    }
-  })
-}
-*/
-  let onEdit = () => {
+
+  let onEditProfileImage = () => {
     {
       listItem.map(item => {
-        if (item.email === currentUser.email) {
+        if (item.email === currentUser.email && prop.prop !== null) {
+          firebase.firestore().collection("users").doc(item.id).update({
+            profileImage: prop,
+          })
+        }
+      })
+    }
+  }
+  let onEditUsername = () => {
+    {
+      listItem.map(item => {
+        if (item.email === currentUser.email && username !== "") {
           firebase.firestore().collection("users").doc(item.id).update({
             username: username,
-            profileImage: imageURL,
+          })
+        }
+      })
+    }
+  }
+  let onEditUserAbout = () => {
+    {
+      listItem.map(item => {
+        if (item.email === currentUser.email && userAbout !== "") {
+          firebase.firestore().collection("users").doc(item.id).update({
             userAbout: userAbout,
           })
         }
       })
     }
   }
-
-  let filtered = (
+   let filtered = (
     <>
       {listItem.map(item => {
         if (item.email === currentUser.email) {
           return (
             <form className={styles.container} /*onSubmit={handleSubmit}*/>
-              <h2 className={styles.title}>Personalize your account</h2>
-
-              <div className={styles.profileImage}>
-                <label htmlFor="profile">Profile image</label>
-                <img
-                  src={item.profileImage}
-                  className={styles.image}
-                  onClick={showInsertImage}
-                ></img>
-              </div>
-
-              {insertImage ? (
-                <InsertProfileImage parentCallback={() => handleCallback()} />
+            <h2 className={styles.title}>Personalize your account</h2>
+             
+              {progress === 100 ? (
+                <div className={styles.button}>
+                  <button
+                    className={styles.loginButton}
+                    type="submit"
+                    //disabled={loading}
+                    onClick={() => onEditProfileImage()}
+                  >
+                    Edit
+                  </button>
+                </div>
               ) : (
                 ""
               )}
@@ -97,9 +108,26 @@ const UpdateUserInfo = () => {
                   name="username"
                   //ref={usernameRef}
                   defaultValue={item.username}
+                  onClick={showUpdateButton2}
                   onChange={e => setUsername(e.target.value)}
                 />
               </section>
+
+             
+              {updateButton2 ? (
+                <div className={styles.button}>
+                  <button
+                    className={styles.loginButton}
+                    type="submit"
+                    //disabled={loading}
+                    onClick={() => onEditUsername()}
+                  >
+                    Edit2
+                  </button>
+                </div>
+              ) : (
+                ""
+              )}
 
               <section className={styles.field}>
                 <label htmlFor="email">Update your field</label>
@@ -112,30 +140,25 @@ const UpdateUserInfo = () => {
                   //required
                   defaultValue={item.userAbout}
                   //ref={emailRef}
+                  onClick={showUpdateButton3}
                   onChange={e => setUserAbout(e.target.value)}
-                ></textarea>
+                 ></textarea>
               </section>
 
-              <div className={styles.button}>
-                <button
-                  className={styles.loginButton}
-                  type="submit"
-                  //disabled={loading}
-                  //onClick={() => editItem(item)}
-                >
-                  Cancel
-                </button>
-              </div>
-              <div className={styles.button}>
-                <button
-                  className={styles.loginButton}
-                  type="submit"
-                  //disabled={loading}
-                  onClick={() => onEdit()}
-                >
-                  Edit
-                </button>
-              </div>
+              {updateButton3 ? (
+                <div className={styles.button}>
+                  <button
+                    className={styles.loginButton}
+                    type="submit"
+                    //disabled={loading}
+                    onClick={() => onEditUserAbout()}
+                  >
+                    Edit3
+                  </button>
+                </div>
+              ) : (
+                ""
+              )}
             </form>
           )
         }
@@ -145,3 +168,4 @@ const UpdateUserInfo = () => {
   return <>{filtered}</>
 }
 export default UpdateUserInfo
+

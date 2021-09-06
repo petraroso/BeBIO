@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
@@ -16,6 +16,8 @@ import styles from "./blog.module.css"
 import HeaderFooterLayout from "../layouts/headerFooter"
 import { myLocalStorage } from "../helper"
 import { library } from "@fortawesome/fontawesome-svg-core"
+import firebase from "../components/Firebase/firebase"
+
 library.add(
   reg,
   sol
@@ -32,6 +34,9 @@ const SecondCom = "Sed ut perspiciatis unde omnis iste"
 const ThirdCom = "ut perspiciatis"
 
 const BlogFeed = ({ pageContext }) => {
+  const [items, setItems] = useState()
+ 
+
   let userAcc = myLocalStorage.getItem("loggedIn")
   
   const [button, setButton] = useState(false)
@@ -39,7 +44,26 @@ const BlogFeed = ({ pageContext }) => {
   const change = () => {
     setButton(true)
   }
-  const { body, title, coverImage, next, prev, authorsName, tags } = pageContext
+  const { body, title, coverImage, next, prev, authorsName, tags, firebase } = pageContext
+  
+  const useItems = () => {
+    useEffect(() => {
+      firebase
+        .firestore() //access firestore
+        .collection("posts") //access "items" collection
+        .onSnapshot(snapshot => {
+          //You can "listen" to a document with the onSnapshot() method.
+          const listItems = snapshot.docs.map(doc => ({
+            //map each document into snapshot
+            id: doc.id, //id and data pushed into items array
+            ...doc.data(), //spread operator merges data to id.
+          }))
+          setItems(listItems) //items is equal to listItems
+        })
+    }, [])
+    return items
+  }
+
 
   const setArray = descr => {
     myLocalStorage.setItem(title, descr)
@@ -51,6 +75,8 @@ const BlogFeed = ({ pageContext }) => {
     setCheck(false)
   }
 
+  console.log("ođe")
+  console.log(items)
   return (
     <HeaderFooterLayout>
       <main className={styles.container}>

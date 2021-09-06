@@ -12,7 +12,6 @@ const ContactPage = ({ activeTab }) => {
 
   const [submit, setSubmit] = useState(false)
   const [count, setCount] = useState (0)
-  console.log(count);
   return(
 
   <div className={styles.container}>
