@@ -4,7 +4,11 @@ import firebase from "../Firebase/firebase"
 import styles from "./style.module.css"
 //import { myLocalStorage } from "../../helper"
 import { useAuth } from "../Contexts/AuthContext"
+<<<<<<< HEAD
 //import { navigate } from "gatsby"
+=======
+//import InsertProfileImage from "../InsertProfileImage"
+>>>>>>> 14f69599b9a652d552e5306c6cc0a9401cfe9838
 
 const UpdateUserInfo = ({ prop, progress }) => {
   const { currentUser } = useAuth()
@@ -17,7 +21,6 @@ const UpdateUserInfo = ({ prop, progress }) => {
   //const [updateButton1, setUpdateButton1] = useState(false)
   const [updateButton2, setUpdateButton2] = useState(false)
   const [updateButton3, setUpdateButton3] = useState(false)
-    
   const showUpdateButton2 = () => {
     setUpdateButton2(true)
   }
@@ -79,14 +82,14 @@ const UpdateUserInfo = ({ prop, progress }) => {
       })
     }
   }
-   let filtered = (
+  let filtered = (
     <>
       {listItem.map(item => {
         if (item.email === currentUser.email) {
           return (
             <form className={styles.container} /*onSubmit={handleSubmit}*/>
-            <h2 className={styles.title}>Personalize your account</h2>
-             
+              <h2 className={styles.title}>Personalize your account</h2>
+
               {progress === 100 ? (
                 <div className={styles.button}>
                   <button
@@ -113,7 +116,6 @@ const UpdateUserInfo = ({ prop, progress }) => {
                 />
               </section>
 
-             
               {updateButton2 ? (
                 <div className={styles.button}>
                   <button

@@ -24,7 +24,7 @@ export default class App extends Component {
     // console.log(e.target.files[0])
   }
 
-  handleUpload = (e) => {
+  handleUpload = e => {
     // console.log(this.state.image);
     let file = this.state.image
     var storage = firebase.storage()

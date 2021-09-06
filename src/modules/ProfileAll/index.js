@@ -1,14 +1,44 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import ProfileContainer from "../ProfileContainer"
 import { navigate } from "gatsby"
 import { myLocalStorage } from "../../helper"
 import BlogHeader from "../../components/BlogHeader"
 import styles from "./style.module.css"
+import { useAuth } from "../../components/Contexts/AuthContext"
+import firebase from "../../components/Firebase/firebase"
 
 const ProfileAll = () => {
-  const user = myLocalStorage.getItem("loggedIn")
+  const { currentUser } = useAuth()
+  let user = myLocalStorage.getItem("loggedIn")
   const url = typeof window !== "undefined" ? window.location.pathname : ""
   // console.log("path" + url)
+
+  const useItems = () => {
+    const [items, setItems] = useState([]) //useState() hook, sets initial state to an empty array
+    useEffect(() => {
+      const unsubscribe = firebase
+        .firestore() //access firestore
+        .collection("users") //access "items" collection
+        .onSnapshot(snapshot => {
+          //You can "listen" to a document with the onSnapshot() method.
+          const listItems = snapshot.docs.map(doc => ({
+            //map each document into snapshot
+            id: doc.id, //id and data pushed into items array
+            ...doc.data(), //spread operator merges data to id.
+          }))
+          setItems(listItems) //items is equal to listItems
+        })
+      return () => unsubscribe()
+    }, [])
+    return items
+  }
+  const listItem = useItems()
+
+  listItem.map(item => {
+    if (item.email === currentUser.email) {
+      user = item.username
+    }
+  })
 
   if (url === "/profile") {
     if (!user) {
