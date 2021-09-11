@@ -18,8 +18,6 @@ const UpdateUserInfo = ({ prop, progress }) => {
   const [updateButton2, setUpdateButton2] = useState(false)
   const [updateButton3, setUpdateButton3] = useState(false)
 
-
-
   const useItems = () => {
     const [items, setItems] = useState([]) //useState() hook, sets initial state to an empty array
     useEffect(() => {
@@ -78,20 +76,17 @@ const UpdateUserInfo = ({ prop, progress }) => {
     <>
       {listItem.map(item => {
         if (item.email === currentUser.email) {
-
           return (
-            
             <div className={styles.wholeBlog}>
-
-               {progress === 100 ? (
-                <div className={styles.button}>
+              {progress === 100 ? (
+                <div className={styles.button2}>
                   <button
-                    className={styles.loginButton}
+                    className={styles.updateUsernameButton}
                     type="submit"
                     //disabled={loading}
                     onClick={() => onEditProfileImage()}
                   >
-                    Edit
+                    Update profile image
                   </button>
                 </div>
               ) : (
@@ -101,29 +96,28 @@ const UpdateUserInfo = ({ prop, progress }) => {
               <section className={styles.field}>
                 <label htmlFor="name">Update username</label>
                 <input
-                className = {styles.input1}
-                  name="email"
+                  className={styles.input1}
                   type="text"
                   maxLength="460"
-                  rows="2"
-                  maxLength="80"
+                  rows="1"
+                  maxLength="30"
                   //required
                   defaultValue={item.username}
                   //ref={emailRef}
                   onInput={e => setUsername(e.target.value)}
-                  onChange={()=>setUpdateButton2(true)}
+                  onChange={() => setUpdateButton2(true)}
                 ></input>
               </section>
 
               {updateButton2 ? (
-                <div className={styles.button}>
+                <div className={styles.button2}>
                   <button
-                    className={styles.loginButton}
+                    className={styles.updateUsernameButton}
                     type="submit"
                     //disabled={loading}
                     onClick={() => onEditUsername()}
                   >
-                    Edit2
+                    Update username
                   </button>
                 </div>
               ) : (
@@ -132,32 +126,34 @@ const UpdateUserInfo = ({ prop, progress }) => {
 
               <section className={styles.field}>
                 <label htmlFor="about">Update user caption</label>
-                <textarea                  
-                  className={styles.textArea2}
+                <textarea
+                  className={styles.textarea2}
                   //onfocus="if(this.value==this.defaultValue)this.value='';this.style.color='#333'" onblur="if(this.value=='') {this.value=this.defaultValue;this.style.color='#CCC'}"
                   //required
                   defaultValue={item.userAbout}
                   //ref={emailRef}
+                  maxLength="560"
+                  rows="7"
                   onInput={e => setUserAbout(e.target.value)}
-                  onChange={()=>setUpdateButton3(true)}
+                  onChange={() => setUpdateButton3(true)}
                 ></textarea>
+                <div className={styles.charNumber}>Maximum 560 characters</div>
               </section>
 
               {updateButton3 ? (
-                <div className={styles.button}>
+                <div className={styles.button2}>
                   <button
-                    className={styles.loginButton}
+                    className={styles.updateUsernameButton}
                     type="submit"
                     //disabled={loading}
                     onClick={() => onEditUserAbout()}
                   >
-                    Edit3
+                    Update caption
                   </button>
                 </div>
               ) : (
                 ""
               )}
-
             </div>
           )
         }

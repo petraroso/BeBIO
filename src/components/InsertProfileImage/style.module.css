@@ -23,25 +23,25 @@
   font-size: 27px;
   margin-bottom: 40px;
 }
-.field{
-    display: flex;
-    flex-direction: column;
- 
-    padding:30px;
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
 }
 .label {
   text-align: left;
-  color: gray;
+  color: #808080;
   font-size: 18px;
-  background-color: white;display: flex;
+  background-color: white;
+  display: flex;
   flex-direction: column;
   padding: 30px;
 }
 
-.pictureHolder{
+.pictureHolder {
   border-radius: 50%;
   margin-bottom: 15px;
-  
 }
 .button {
   margin-top: 5px;
@@ -57,10 +57,10 @@
   border-radius: 10px;
   box-shadow: 0px 0px 1px 0 lightgrey;
   font-size: 12px;
-    line-height: 1.2;
+  line-height: 1.2;
 }
 
-.buttonLabel{
+.buttonLabel {
   margin-top: 5px;
   transition: transform 0.2s;
   cursor: pointer;
@@ -74,41 +74,64 @@
   border-radius: 10px;
   box-shadow: 0px 0px 1px 0 lightgrey;
   font-size: 12px;
-    line-height: 1.2;
+  line-height: 1.2;
 }
 
-.progress{
+.progress {
   font-size: 16px;
   line-height: 1.2;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 input[type="file"] {
   display: none;
 }
-.buttonDiv{
-
+.uploadButtonsDiv {
+  display: flex;
+  align-items: center;
+}
+.buttonDiv {
+  margin-bottom: 30px;
+}
+.buttonDiv2 {
   margin-bottom: 30px;
 }
 
-.buttonUpload{
+.buttonUpload1 {
   text-align: center;
   padding: 12px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 16px;
   border-radius: 10px;
   border: none;
   outline: none;
   transition: transform 0.2s;
   background-color: #e5e6de;
 
-  margin:5px;
-  margin-left:0px;
+  margin-top: 12px;
 }
-.buttonUpload:hover{
+.buttonUpload2 {
+  text-align: center;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  transition: transform 0.2s;
+  background-color: #e5e6de;
+
+  margin: 5px;
+  margin-left: 0px;
+}
+.buttonUpload2:hover,
+.buttonUpload1:hover {
   background-color: #28a535;
   color: white;
-  transition: all 0.5s ease-in-out;
-  transform: scale(1.05);
+}
+.arrowIcon {
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .insert {
@@ -125,8 +148,8 @@ input[type="file"] {
   transition: transform 0.2s;
 
   font-size: 18px;
-    padding: 10px;
-    width: fit-content;
+  padding: 10px;
+  width: fit-content;
 }
 .insert:hover {
   background-color: #28a535;
@@ -251,4 +274,37 @@ input[type="file"] {
 
 input[type="file"] {
   display: none;
+}
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
+}
+@media only screen and (max-width: 1050px) {
+  .background {
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 50px 4fr 100px;
+  }
+}
+@media only screen and (max-width: 930px) {
+  .loginButton {
+    font-size: 18px;
+    padding: 10px;
+  }
+  .title {
+    font-size: 22px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .background {
+    grid-template-columns: 10px auto 10px;
+  }
 }
