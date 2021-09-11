@@ -1,8 +1,11 @@
 import React, { Component } from "react"
 import firebase from "../Firebase/firebase"
 import styles from "./style.module.css"
-import { getStorage, ref } from "firebase/storage"
+import { getStorage } from "firebase/storage"
 import AddNewFeed from "../AddNewFeed"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faImage } from "@fortawesome/free-solid-svg-icons"
+
 
 export default class App extends Component {
   constructor() {
@@ -11,8 +14,12 @@ export default class App extends Component {
       image: null,
       progress: 0,
       downloadURL: null,
+      button:false,
+      title:"",
+      update:false,
     }
   }
+  
   
   handleChange = e => {
     if (e.target.files[0]) {
@@ -25,11 +32,12 @@ export default class App extends Component {
   }
 
   handleUpload = () => {
-    // console.log(this.state.image);
     let file = this.state.image
     var storage = firebase.storage()
     var storageRef = storage.ref()
     var uploadTask = storageRef.child("folder/" + file.name).put(file)
+
+    
 
     uploadTask.on(
       firebase.storage.TaskEvent.STATE_CHANGED,
@@ -52,45 +60,61 @@ export default class App extends Component {
         document.getElementById("file").value = null
       }
     )
-    /*
-console.log("hh");
- console.log(file);
- storage.ref('file').child(this.state.image.name).getDownloadURL().then(url => {
-    firebase
-    .firestore()
-    .collection('notes')
-    .add({
-      downloadURL: url
-    })
-    .then(() => {
-      this.setState('')
-    })
-});*/
   }
 
+ 
 
   render() {
+    console.log("parent");
+    console.log(this.state.update);
     return (
-      <div className="App">
-        <h4>upload image</h4>
-        <label>
+      <div className={styles.container}>
+      <div className={styles.wholeBlog}>
+      <h2 className={styles.add}>Add new post</h2>
+        <button className={styles.insert} onClick={() => this.setState({update:true})}>
+            <FontAwesomeIcon icon={faImage} size="1x" color="#11111" />
+            &nbsp;&nbsp;update profile picture
+          </button>
+      {this.state.update? 
+      <section className={styles.field}>
+        <div className={styles.buttonDiv}>
+        <label className = {styles.buttonUpload}>
           Choose file
           <input type="file" id="file" onChange={this.handleChange} />
         </label>
+        </div>
 
+        <div className = {styles.picHolderDiv}>
+         <img
+          className={styles.pictureHolder}
+          src={this.state.downloadURL || "https://via.placeholder.com/150x150"}
+          alt="Uploaded Images"
+          height="150"
+          width="150"
+
+        />
+        </div>
+        
+        <div className = {styles.progress}>
+        <span>Image uploaded... </span>
         {this.state.progress}
-        <button className="button" onClick={this.handleUpload}>
+        <span>%</span>
+        </div>
+
+        <div className={styles.buttonDiv}>
+        <button className={styles.buttonUpload} onClick={this.handleUpload}>
           Upload
         </button>
-        <img
-          className="ref"
-          src={this.state.downloadURL || "https://via.placeholder.com/400x300"}
-          alt="Uploaded Images"
-          height="300"
-          width="400"
-        />
+        </div>
+        </section> : ""}
         
-        <AddNewFeed prop={this.state.downloadURL} />
+        </div>
+
+        <AddNewFeed prop1={this.state.downloadURL}
+         />
+        
+      
+      
       </div>
     )
   }

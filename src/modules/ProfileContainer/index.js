@@ -18,7 +18,7 @@ const ProfileContainer = ({ name }) => {
   let [posts, setPosts] = useState(null)
   let [isLoaded, setLoaded] = useState(false)
   let [increment, setIncrememt] = useState(0)
-const [items, setItems] = useState([])
+  const [items, setItems] = useState([])
   const useItems = () => {
     
 

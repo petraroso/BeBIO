@@ -1,26 +1,65 @@
-.background {
-  display: grid;
-  grid-template-columns: 35% 30% 35%;
-  grid-template-rows: 0.5fr 4fr 1fr;
+.textareaDescription {
+  font-size: 20px;
+  margin-bottom: 5px;
 }
-
-.container {
-  background-color: white;
-  box-shadow: 0px 0px 8px 0 lightgray;
-  border-radius: 20px;
-  grid-column: 2/3;
-  grid-row: 2/3;
-  padding: 30px;
-
+.text {
   display: flex;
-  flex-flow: column;
-  justify-content: center;
+  flex-grow: 1;
+}
+.charNumber {
+  display: flex;
+  justify-content: flex-end;
+  color: gray;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+.pictureDiv {
+  margin-bottom: 30px;
+}
+.insert {
+  background-color: #696f45;
+  color: white;
+  text-align: center;
+
+  padding: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+
+  box-shadow: 0px 0px 8px 0 lightgray;
+  outline: none;
+  transition: transform 0.2s;
+}
+.insert:hover {
+  background-color: #28a535;
 }
 .title {
   display: flex;
   justify-content: center;
   font-size: 27px;
   margin-bottom: 40px;
+}
+/*.textarea2 {
+  background-color: white;
+
+  color: lightslategray;
+  padding: 1% 50px;
+  text-align: left;
+  text-decoration: none;
+
+  display: flex;
+  flex-grow: 1;
+  height: max-content;
+
+  font-size: 15px;
+  cursor: auto;
+
+  border-color: gray;
+  border-radius: 10px;
+
+  outline: none;
+  resize: none;
 }
 
 .field {
@@ -102,7 +141,35 @@
   display: flex;
   justify-content: center;
 }
+.textarea2 {
+  background-color: white;
 
+  color: lightslategray;
+  padding: 1% 50px;
+  text-align: left;
+  text-decoration: none;
+
+  display: flex;
+  flex-grow: 1;
+  height: max-content;
+
+  font-size: 15px;
+  cursor: auto;
+
+  border-color: gray;
+  border-radius: 10px;
+
+  outline: none;
+  resize: none;
+}
+.textarea2:focus {
+  box-shadow: 0px 0px 8px 0 #28a535;
+  border-color: #28a535;
+}
+.wholeBlog{
+  display: block;
+}
+/*
 .spanclass {
   grid-column: 2/3;
   grid-row: 3/4;
@@ -240,7 +307,63 @@
   animation-delay: 0s;
   animation-duration: 11s;
 }
+*/
 
+  .textarea2 {
+    background-color: white;
+  
+    color: lightslategray;
+    padding: 1% 50px;
+    text-align: left;
+    text-decoration: none;
+  
+    display: flex;
+    flex-grow: 1;
+    height: max-content;
+  
+    
+    font-size: 15px;
+    cursor: auto;
+  
+    border-color: gray;
+    border-radius: 10px;
+  
+    outline: none;
+    resize: none;
+  }
+  .textarea2:focus {
+    box-shadow: 0px 0px 8px 0 #28a535;
+    border-color: #28a535;
+  }
+  .textarea2 defaulValue{
+    color:grey
+  }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  
+}
+.input1 {
+  border: 0;
+  margin: 10px 0;
+  border-bottom: darkgray solid 1.5px;
+  color: gray;
+  font-size: 16px;
+}
+
+.field input:focus {
+  outline: 0;
+  border-bottom: darkgray solid 2px;
+}
+
+.field label {
+  text-align: left;
+  color: gray;
+  font-size: 18px;
+  background-color: white;
+}
 @keyframes animate {
   0% {
     transform: translateY(0) rotate(0deg);

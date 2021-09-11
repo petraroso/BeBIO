@@ -4,11 +4,7 @@ import firebase from "../Firebase/firebase"
 import styles from "./style.module.css"
 //import { myLocalStorage } from "../../helper"
 import { useAuth } from "../Contexts/AuthContext"
-<<<<<<< HEAD
 //import { navigate } from "gatsby"
-=======
-//import InsertProfileImage from "../InsertProfileImage"
->>>>>>> 14f69599b9a652d552e5306c6cc0a9401cfe9838
 
 const UpdateUserInfo = ({ prop, progress }) => {
   const { currentUser } = useAuth()
@@ -21,12 +17,8 @@ const UpdateUserInfo = ({ prop, progress }) => {
   //const [updateButton1, setUpdateButton1] = useState(false)
   const [updateButton2, setUpdateButton2] = useState(false)
   const [updateButton3, setUpdateButton3] = useState(false)
-  const showUpdateButton2 = () => {
-    setUpdateButton2(true)
-  }
-  const showUpdateButton3 = () => {
-    setUpdateButton3(true)
-  }
+
+
 
   const useItems = () => {
     const [items, setItems] = useState([]) //useState() hook, sets initial state to an empty array
@@ -86,11 +78,12 @@ const UpdateUserInfo = ({ prop, progress }) => {
     <>
       {listItem.map(item => {
         if (item.email === currentUser.email) {
-          return (
-            <form className={styles.container} /*onSubmit={handleSubmit}*/>
-              <h2 className={styles.title}>Personalize your account</h2>
 
-              {progress === 100 ? (
+          return (
+            
+            <div className={styles.wholeBlog}>
+
+               {progress === 100 ? (
                 <div className={styles.button}>
                   <button
                     className={styles.loginButton}
@@ -106,14 +99,20 @@ const UpdateUserInfo = ({ prop, progress }) => {
               )}
 
               <section className={styles.field}>
-                <label htmlFor="username">Username</label>
+                <label htmlFor="name">Update username</label>
                 <input
-                  name="username"
-                  //ref={usernameRef}
+                className = {styles.input1}
+                  name="email"
+                  type="text"
+                  maxLength="460"
+                  rows="2"
+                  maxLength="80"
+                  //required
                   defaultValue={item.username}
-                  onClick={showUpdateButton2}
-                  onChange={e => setUsername(e.target.value)}
-                />
+                  //ref={emailRef}
+                  onInput={e => setUsername(e.target.value)}
+                  onChange={()=>setUpdateButton2(true)}
+                ></input>
               </section>
 
               {updateButton2 ? (
@@ -132,19 +131,16 @@ const UpdateUserInfo = ({ prop, progress }) => {
               )}
 
               <section className={styles.field}>
-                <label htmlFor="email">Update your field</label>
-                <textarea
-                  className={styles.textarea}
-                  name="bio"
-                  type="text"
-                  maxLength="460"
-                  rows="6"
+                <label htmlFor="about">Update user caption</label>
+                <textarea                  
+                  className={styles.textArea2}
+                  //onfocus="if(this.value==this.defaultValue)this.value='';this.style.color='#333'" onblur="if(this.value=='') {this.value=this.defaultValue;this.style.color='#CCC'}"
                   //required
                   defaultValue={item.userAbout}
                   //ref={emailRef}
-                  onClick={showUpdateButton3}
-                  onChange={e => setUserAbout(e.target.value)}
-                 ></textarea>
+                  onInput={e => setUserAbout(e.target.value)}
+                  onChange={()=>setUpdateButton3(true)}
+                ></textarea>
               </section>
 
               {updateButton3 ? (
@@ -161,13 +157,14 @@ const UpdateUserInfo = ({ prop, progress }) => {
               ) : (
                 ""
               )}
-            </form>
+
+            </div>
           )
         }
       })}
     </>
   )
+
   return <>{filtered}</>
 }
 export default UpdateUserInfo
-

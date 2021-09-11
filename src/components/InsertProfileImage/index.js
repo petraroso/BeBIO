@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import firebase from "../Firebase/firebase"
 import styles from "./style.module.css"
-import { getStorage, ref } from "firebase/storage"
+import { Link } from "gatsby"
 import UpdateUserInfo from "../UpdateUserInfo"
 
 export default class App extends Component {
@@ -20,12 +20,10 @@ export default class App extends Component {
         image: e.target.files[0],
       })
     }
-
-    // console.log(e.target.files[0])
   }
 
   handleUpload = e => {
-    // console.log(this.state.image);
+    
     let file = this.state.image
     var storage = firebase.storage()
     var storageRef = storage.ref()
@@ -33,7 +31,8 @@ export default class App extends Component {
 
     
     
-    e.preventDefault();
+    e.preventDefault()
+    
     
     uploadTask.on(
       firebase.storage.TaskEvent.STATE_CHANGED,
@@ -46,8 +45,6 @@ export default class App extends Component {
         throw error
       },
       () => {
-        // uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) =>{
-
         uploadTask.snapshot.ref.getDownloadURL().then(url => {
           this.setState({
             downloadURL: url,
@@ -60,31 +57,74 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h4>upload image</h4>
-        <label>
+      <main className = {styles.background}>
+      <form className={styles.container}>
+        <h2 className={styles.add}>Personalize your account</h2>
+        
+
+        
+
+      
+      <section className={styles.field}>
+        <div className={styles.buttonDiv}>
+        <label className = {styles.buttonUpload}>
           Choose file
           <input type="file" id="file" onChange={this.handleChange} />
         </label>
+        </div>
 
+        <div className = {styles.picHolderDiv}>
+         <img
+          className={styles.pictureHolder}
+          src={this.state.downloadURL || "https://via.placeholder.com/150x150"}
+          alt="Uploaded Images"
+          height="150"
+          width="150"
+        />
+        </div>
+        
+        <div className = {styles.progress}>
+        <span>Image uploaded... </span>
         {this.state.progress}
-        <button className="button" onClick={this.handleUpload}>
+        <span>%</span>
+        </div>
+
+        <div className={styles.buttonDiv2}>
+        <button className={styles.buttonUpload} onClick={this.handleUpload}>
           Upload
         </button>
+        </div>
+        </section> 
         
-        <img
-          className="ref"
-          src={this.state.downloadURL || "https://via.placeholder.com/400x300"}
-          alt="Uploaded Images"
-          height="300"
-          width="400"
-        />
         
+       
+        
+        <>
         <UpdateUserInfo 
         prop={this.state.downloadURL} 
         progress = {this.state.progress}
          />
-      </div>
+        </>
+      </form>
+      <span className={styles.spanclass}>
+        <Link to={"/profile"}>Cancel</Link>
+      </span>
+
+      <div className={styles.area}>
+        <ul className={styles.circles}>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+        </div>
+      </main>
     )
   }
 }
