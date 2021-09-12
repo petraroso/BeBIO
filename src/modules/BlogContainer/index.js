@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import styles from "./style.module.css"
@@ -9,7 +9,6 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import firebase from "../../components/Firebase/firebase"
 
-
 library.add(
   faBookmark
 
@@ -17,10 +16,7 @@ library.add(
 )
 
 const BlogContainer = ({ tags }) => {
-
   const [items, setItems] = useState([])
-
-
 
   useEffect(() => {
     firebase
@@ -71,37 +67,39 @@ const BlogContainer = ({ tags }) => {
 
   let filtered = (
     <>
-      {items? items.map(item => {
-        return (
-          <div className={styles.container}>
-            <div className={styles.post}>
-              <div className={styles.imageDiv}>
-              <img src = {item.imageURL.prop} className={styles.image}></img>
-              </div>
-              <div className={styles.body}>
-                <div className={styles.tags}> #{item.tag}</div>
-                <div>
-                <Link to={`/blogPosts/${item.id}`}>
-                  <h2>{item.title}</h2>
-                </Link>
+      {items
+        ? items.map(item => {
+            return (
+              <div className={styles.container}>
+                <div className={styles.post}>
+                  <img src={item.imageURL.prop} className={styles.image}></img>
+
+                  <div className={styles.body}>
+                    <div className={styles.tags}> #{item.tag}</div>
+                    <div>
+                      <Link to={`/blogPosts/${item.id}`}>
+                        <h2>{item.title}</h2>
+                      </Link>
+                    </div>
+                    <section className={styles.blog2}>
+                      <div className={styles.text}>
+                        <div> {item.summary}... </div>
+                      </div>
+                      <div className={styles.ratingandname}>
+                        <div className={styles.rating}>
+                          <BlogRating />
+                        </div>
+                        <div className={styles.author}>
+                          <h4 className={styles.name}>{item.authorsName}</h4>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
                 </div>
-                <section className={styles.blog2}>
-                  <div className={styles.text}>
-                    <div> {item.summary} </div>
-                  </div>
-                  <div className={styles.ratingandname}>
-                    <div className={styles.rating}>
-                      <BlogRating />
-                    </div>
-                    <div className={styles.author}>
-                      <h4 className={styles.name}>{item.authorsName}</h4>
-                    </div>
-                  </div>
-                </section>
               </div>
-            </div>
-          </div>
-        )}):""}
+            )
+          })
+        : ""}
       {data.allContentfulBlogFeed.nodes.map(node => {
         return (
           <div className={styles.container}>
@@ -114,9 +112,9 @@ const BlogContainer = ({ tags }) => {
               <div className={styles.body}>
                 <div className={styles.tags}> #{node.tags}</div>
                 <div>
-                <Link to={`/blogPosts/${node.slug}`}>
-                  <h2>{node.title}</h2>
-                </Link>
+                  <Link to={`/blogPosts/${node.slug}`}>
+                    <h2>{node.title}</h2>
+                  </Link>
                 </div>
                 <section className={styles.blog2}>
                   <div className={styles.text}>
@@ -136,7 +134,6 @@ const BlogContainer = ({ tags }) => {
           </div>
         )
       })}
-    
     </>
   )
 
@@ -145,75 +142,89 @@ const BlogContainer = ({ tags }) => {
 
     filtered = (
       <>
-    {items? items.map(item => {if(item.tag.startsWith(tags)){
-      check = 1;
-        return (
-          <div className={styles.container}>
-            <div className={styles.post}>
-              <div className={styles.imageDiv}>
-              <img src = {item.imageURL.prop} className={styles.image}></img>
-              </div>
-              <div className={styles.body}>
-                <div className={styles.tags}> #{item.tag}</div>
-                <div>
-                <Link to={`/blogPosts/${item.id}`}>
-                  <h2>{item.title}</h2>
-                </Link>
+        {items
+          ? items.map(item => {
+              if (item.tag.startsWith(tags)) {
+                check = 1
+                return (
+                  <div className={styles.container}>
+                    <div className={styles.post}>
+                      <div className={styles.imageDiv}>
+                        <img
+                          src={item.imageURL.prop}
+                          className={styles.image}
+                        ></img>
+                      </div>
+                      <div className={styles.body}>
+                        <div className={styles.tags}> #{item.tag}</div>
+                        <div>
+                          <Link to={`/blogPosts/${item.id}`}>
+                            <h2>{item.title}</h2>
+                          </Link>
+                        </div>
+                        <section className={styles.blog2}>
+                          <div className={styles.text}>
+                            <div> {item.summary} </div>
+                          </div>
+                          <div className={styles.ratingandname}>
+                            <div className={styles.rating}>
+                              <BlogRating />
+                            </div>
+                            <div className={styles.author}>
+                              <h4 className={styles.name}>
+                                {item.authorsName}
+                              </h4>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                    </div>
+                  </div>
+                )
+              }
+            })
+          : ""}
+        {data.allContentfulBlogFeed.nodes.map(node => {
+          if (node.tags.startsWith(tags)) {
+            check = 1
+            return (
+              <div className={styles.container}>
+                <div className={styles.post}>
+                  <div className={styles.imageDiv}>
+                    <Link to={`/blogPosts/${node.slug}`}>
+                      <Img
+                        fluid={node.coverImage.fluid}
+                        className={styles.image}
+                      />
+                    </Link>
+                  </div>
+                  <div className={styles.body}>
+                    <div className={styles.tags}> #{node.tags}</div>
+                    <div>
+                      <Link to={`/blogPosts/${node.slug}`}>
+                        <h2>{node.title}</h2>
+                      </Link>
+                    </div>
+                    <section className={styles.blog2}>
+                      <div className={styles.text}>
+                        <div> {node.summary.internal.content} </div>
+                      </div>
+                      <div className={styles.ratingandname}>
+                        <div className={styles.rating}>
+                          <BlogRating />
+                        </div>
+                        <div className={styles.author}>
+                          <h4 className={styles.name}>{node.authorsName}</h4>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
                 </div>
-                <section className={styles.blog2}>
-                  <div className={styles.text}>
-                    <div> {item.summary} </div>
-                  </div>
-                  <div className={styles.ratingandname}>
-                    <div className={styles.rating}>
-                      <BlogRating />
-                    </div>
-                    <div className={styles.author}>
-                      <h4 className={styles.name}>{item.authorsName}</h4>
-                    </div>
-                  </div>
-                </section>
               </div>
-            </div>
-          </div>
-        )}}):""}
-    {data.allContentfulBlogFeed.nodes.map(node => {
-      if (node.tags.startsWith(tags)) {
-        check = 1
-        return (
-          <div className={styles.container}>
-            <div className={styles.post}>
-              <div className={styles.imageDiv}>
-                <Link to={`/blogPosts/${node.slug}`}>
-                  <Img fluid={node.coverImage.fluid} className={styles.image} />
-                </Link>
-              </div>
-              <div className={styles.body}>
-                <div className={styles.tags}> #{node.tags}</div>
-                <div>
-                <Link to={`/blogPosts/${node.slug}`}>
-                  <h2>{node.title}</h2>
-                </Link></div>
-                <section className={styles.blog2}>
-                  <div className={styles.text}>
-                    <div> {node.summary.internal.content} </div>
-                  </div>
-                  <div className={styles.ratingandname}>
-                    <div className={styles.rating}>
-                      <BlogRating />
-                    </div>
-                    <div className={styles.author}>
-                      <h4 className={styles.name}>{node.authorsName}</h4>
-                    </div>
-                  </div>
-                </section>
-              </div>
-            </div>
-          </div>
-        )
-      }
-    })}
-    </>
+            )
+          }
+        })}
+      </>
     )
     if (check === 0) {
       filtered = (
@@ -239,9 +250,7 @@ const BlogContainer = ({ tags }) => {
               </div>
             </div>
             <div className={styles.links}>
-             <Link to = {"/blog"}>
-                &#8592; Go back to blog feed
-              </Link>
+              <Link to={"/blog"}>&#8592; Go back to blog feed</Link>
             </div>
           </div>
         </>
