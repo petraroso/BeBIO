@@ -55,20 +55,18 @@
 }
 .secondDiv {
   grid-area: text;
-  display: grid;
-  grid-template-rows: 20% 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin-right: 10%;
   margin-left: 3%;
 }
 .heading {
-  grid-row: 1/2;
-  display:grid;
-  grid-template-columns: 250px auto 24px;
-  grid-template-areas: "name . bookmark";
+  display: flex;
+  justify-content: space-between;
   margin-top: 60px;
 }
 .nameAndEdit {
-  grid-area: name;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -80,28 +78,33 @@
   margin-right: 30px;
   font-weight: normal;
 }
+.buttonsDiv {
+  display: flex;
+  justify-content: center;
+}
 .editDiv {
   text-align: center;
   padding: 12px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 16px;
   border-radius: 10px;
   border: none;
   outline: none;
   transition: transform 0.2s;
   background-color: #e5e6de;
 
-  margin:5px;
-  margin-top:0px;
- 
-  
+  margin: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 .editDiv:hover {
+  background-color: #28a535;
+  color: white;
   transition: all 0.5s ease-in-out;
-  transform: scale(1.2);
+  transform: scale(1.05);
 }
+
 .bookmarkDiv {
-  grid-area: bookmark;
   margin-top: 5px;
   transition: transform 0.2s;
 }
@@ -113,10 +116,7 @@ a {
   width: 0%;
 }
 .text {
-  grid-row: 2/3;
-  margin-top: 40px;
   font-size: 16px;
-  line-height: 1.75;
   text-align: justify;
 }
 
@@ -132,6 +132,9 @@ a {
   }
   .secondDiv {
     margin-left: 20px;
+  }
+  .editDiv {
+    padding: 10px;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -149,9 +152,6 @@ a {
     margin-top: 0px;
   }
   .secondDiv {
-    grid-area: text;
-    display: grid;
-    grid-template-rows: 35% 65%;
     margin-right: 0px;
     margin-left: 20px;
   }
@@ -161,16 +161,14 @@ a {
     display: flex;
     align-self: center;
   }
-  .editDiv {
-    margin: 0px;
-  }
+
   .text {
     margin-top: 0px;
     line-height: 1.3;
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 490px) {
   .statistics {
     display: grid;
     grid-template-columns: 100%;
@@ -186,7 +184,11 @@ a {
   .secondDiv {
     margin-left: 10px;
   }
-  .editDiv{
-    margin-top:7px;
+  .buttonsDiv {
+    flex-direction: column;
+  }
+  .editDiv {
+    margin: 0px;
+    margin-top: 7px;
   }
 }
