@@ -110,7 +110,7 @@ export default class App extends Component {
         
         </div>
 
-        <AddNewFeed prop1={this.state.downloadURL}
+        <AddNewFeed prop={this.state.downloadURL}
          />
         
       

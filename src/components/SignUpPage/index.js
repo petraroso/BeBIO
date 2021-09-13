@@ -6,13 +6,13 @@ import { myLocalStorage } from "../../helper"
 import { useAuth } from "../Contexts/AuthContext"
 
 const SignUpPage = () => {
-  const [username, setUserName] = useState("")
   //const [password, setPassword] = useState()
   const [email, setEmail] = useState("")
-  const [profileImageURL, setProfileImageURL] = useState("")
+  const [profileImage, setProfileImageURL] = useState("")
   const [userAbout, setUserAbout] = useState("")
+  const [username, setUsername] = useState("")
   //const [error, setError] = useState(false)
-  //const [loading, setLoading] = useState(false)
+  const [userUID, setUserUID] = useState("")
 
   const emailRef = useRef()
   //const usernameRef = useRef()
@@ -31,26 +31,29 @@ const SignUpPage = () => {
       setPasswordError("")
       setPasswordLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
-      myLocalStorage.setItem("loggedIn", username)
+    //  myLocalStorage.setItem("loggedIn", username)
 
       firebase
         .firestore()
         .collection("users")
         .add({
-          username,
           email,
-          profileImageURL,
+          profileImage,
           userAbout,
+          userUID,
+          username
         })
         //.then will reset the form to nothing/set placeholders
         .then(
-          () => setUserName(""),
+          () => 
           setEmail(""),
           setProfileImageURL(""),
-          setUserAbout("")
+          setUserAbout(""),
+          setUserUID(""),
+          setUsername("")
         )
 
-      return navigate("/profile")
+      return navigate("/usernameinput")
     } catch {
       setPasswordError("Failed to create an account")
     }
@@ -75,16 +78,6 @@ const SignUpPage = () => {
             ref={emailRef}
             onChange={e => setEmail(e.target.value)}
           ></input>
-        </section>
-
-        <section className={styles.field}>
-          <label htmlFor="username">Username</label>
-          <input
-            name="username"
-            //ref={usernameRef}
-            required
-            onChange={e => setUserName(e.target.value)}
-          />
         </section>
 
         <section className={styles.field}>

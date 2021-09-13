@@ -9,6 +9,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import ProfileAbout from "../../components/ProfileAbout"
+import { useAuth } from "../../components/Contexts/AuthContext"
+
 
 library.add(faTrashAlt)
 
@@ -19,7 +21,8 @@ const ProfileContainer = ({ name }) => {
   let [isLoaded, setLoaded] = useState(false)
   let [increment, setIncrememt] = useState(0)
   const [items, setItems] = useState([])
-  const useItems = () => {
+  const {currentUser} = useAuth()
+
     
 
     useEffect(() => {
@@ -36,8 +39,8 @@ const ProfileContainer = ({ name }) => {
           setItems(listItems) //items is equal to listItems
         })
     }, [])
-    return items
-  }
+    
+  
 
   const changeSlug = property => {
     firebase.firestore().collection("posts").doc(property).delete();
@@ -48,9 +51,6 @@ const ProfileContainer = ({ name }) => {
   let firstVar
 
   let count = 0;
-
-
- // const listItem = useItems()
 
   firstVar = (
     <>
@@ -64,7 +64,9 @@ const ProfileContainer = ({ name }) => {
       </div>
       <section className={styles.container}>
         {items.map(item => {
-          if (item.title !== name) {
+          console.log(currentUser.uid)
+          console.log(item.userUID)
+          
             count = count + 1;
             return (
               <>
@@ -95,7 +97,6 @@ const ProfileContainer = ({ name }) => {
                 </div>
               </>
             )
-            }
         })}
       </section>
     </>

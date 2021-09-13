@@ -1,6 +1,6 @@
 import React from "react"
 import NavigationBar from "../NavigationBar"
-//import ProfileNav from '../ProfileNav'
+
 
 import styles from "./style.module.css"
 

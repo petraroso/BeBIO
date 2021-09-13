@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import Navigation from "../Navigation"
 
 import PILoggedOut from "../Images/PILoggedOut"
-import ProfileNav from "../Images/ProfileNav"
+import ProfileNavSmall from "../Images/ProfileNavSmall"
 import styles from "./style.module.css"
 import { myLocalStorage } from "../../helper"
 import { FiMenu } from "react-icons/fi"
@@ -170,7 +170,7 @@ const NavigationHeader = ({ activeTab }) => {
         <div className={styles.profileNav}>
           {pic ? (
             <Link to={"/profile"}>
-              <ProfileNav prop={pic} />{" "}
+              <ProfileNavSmall prop={pic} />{" "}
             </Link>
           ) : (
             <Link to={`/login`}>

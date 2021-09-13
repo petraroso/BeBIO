@@ -44,17 +44,19 @@ const ProfileAbout = ({ name, total }) => {
   const listItem = useItems()
   console.log(items)
   console.log(currentUser.email)
+  
 
   let firstVar = (
     <>
       {listItem.map(item => {
         if (item.email === currentUser.email) {
           console.log(item.userAbout)
+          console.log(item.profileImage)
           return (
             <section className={styles.form}>
               <div className={styles.firstDiv}>
                 <div className={styles.pictureDiv}>
-                  <ProfileNav />
+                  <ProfileNav prop = {item.profileImage}  />
                 </div>
                 <div className={styles.statistics}>
                   <h4 className={styles.num1}>{total}</h4>
