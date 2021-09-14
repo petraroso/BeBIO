@@ -162,3 +162,20 @@
 input[type="file"] {
   display: none;
 }
+@media only screen and (max-width: 930px) {
+  .container {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .container {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .charNumber {
+    font-size: 13px;
+  }
+}
