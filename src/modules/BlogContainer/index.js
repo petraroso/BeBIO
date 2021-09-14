@@ -82,12 +82,10 @@ const BlogContainer = ({ tags }) => {
                 return (
                   <div className={styles.container}>
                     <div className={styles.post}>
-                      <div className={styles.imageDiv}>
                         <img
                           src={item.imageURL.prop}
                           className={styles.image}
                         ></img>
-                      </div>
                       <div className={styles.body}>
                         <div className={styles.tags}> #{item.tag}</div>
                         <div>
