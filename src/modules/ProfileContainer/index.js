@@ -14,12 +14,10 @@ import { useAuth } from "../../components/Contexts/AuthContext"
 library.add(faTrashAlt)
 
 const ProfileContainer = ({ name }) => {
-  //let [posts, setPosts] = useState(null)
-  //let [isLoaded, setLoaded] = useState(false)
-  let [increment, setIncrememt] = useState(0)
   const [items, setItems] = useState([])
   const { currentUser } = useAuth()
 
+  
   useEffect(() => {
     firebase
       .firestore() //access firestore
@@ -96,7 +94,6 @@ const ProfileContainer = ({ name }) => {
     </>
   )
 
-  count = count - increment
 
   return (
     <>

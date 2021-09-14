@@ -18,23 +18,7 @@ import { navigate } from "@reach/router"
 
 const NavigationHeader = ({ activeTab }) => {
   const loggedIn = () => !!myLocalStorage.getItem("loggedIn")
-  const [error, setError]=useState("")
-  const {currentUser, logout} =useAuth()
-
-  if (!loggedIn()) {
-    myLocalStorage.removeItem("follower")
-    async function handleLogout(){
-      setError('')
-
-      try{
-        await logout()
-        
-      }catch {
-        setError('Failed to log out')
-      }
-
-    }
-  }
+ 
 
   const profile = "Profile"
   const login = "Login"

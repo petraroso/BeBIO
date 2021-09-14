@@ -34,6 +34,13 @@ const SecondCom = "Sed ut perspiciatis unde omnis iste"
 const ThirdCom = "ut perspiciatis"
 
 const BlogFeed = ({ pageContext }) => {
+
+  let firebase;
+
+if (typeof window !== 'undefined') {
+  firebase = require('firebase');
+}
+
   const [items, setItems] = useState()
  
 
@@ -44,9 +51,9 @@ const BlogFeed = ({ pageContext }) => {
   const change = () => {
     setButton(true)
   }
-  const { body, title, coverImage, next, prev, authorsName, tags, firebase } = pageContext
+  const { body, title, coverImage, next, prev, authorsName, tags} = pageContext
   
-  const useItems = () => {
+ /* const useItems = () => {
     useEffect(() => {
       firebase
         .firestore() //access firestore
@@ -62,7 +69,7 @@ const BlogFeed = ({ pageContext }) => {
         })
     }, [])
     return items
-  }
+  }*/
 
 
   const setArray = descr => {

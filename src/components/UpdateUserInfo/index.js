@@ -2,22 +2,18 @@ import React, { useState, useEffect } from "react"
 import firebase from "../Firebase/firebase"
 //import { navigate } from "gatsby"
 import styles from "./style.module.css"
-//import { myLocalStorage } from "../../helper"
 import { useAuth } from "../Contexts/AuthContext"
-//import { navigate } from "gatsby"
+
 
 const UpdateUserInfo = ({ prop, progress }) => {
   const { currentUser } = useAuth()
 
-  //const [loading, setLoading] = useState(false)
   const [username, setUsername] = useState("")
-  //const [profileImageURL, setProfileImageURL] = useState("")
   const [userAbout, setUserAbout] = useState("")
-  //const [imageURL, setImageURL] = useState(null)
-  //const [updateButton1, setUpdateButton1] = useState(false)
   const [updateButton2, setUpdateButton2] = useState(false)
   const [updateButton3, setUpdateButton3] = useState(false)
 
+  
   const useItems = () => {
     const [items, setItems] = useState([]) //useState() hook, sets initial state to an empty array
     useEffect(() => {

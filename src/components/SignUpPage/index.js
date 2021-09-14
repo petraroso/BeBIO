@@ -6,16 +6,13 @@ import { myLocalStorage } from "../../helper"
 import { useAuth } from "../Contexts/AuthContext"
 
 const SignUpPage = () => {
-  //const [password, setPassword] = useState()
   const [email, setEmail] = useState("")
   const [profileImage, setProfileImageURL] = useState("")
   const [userAbout, setUserAbout] = useState("")
   const [username, setUsername] = useState("")
-  //const [error, setError] = useState(false)
   const [userUID, setUserUID] = useState("")
 
   const emailRef = useRef()
-  //const usernameRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmationRef = useRef()
   const { signup } = useAuth()
