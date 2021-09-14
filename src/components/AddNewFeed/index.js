@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import firebase from "../Firebase/firebase"
 import styles from "./style.module.css"
 import "react-calendar/dist/Calendar.css"
 import { navigate } from "gatsby"
+import { useAuth } from "../Contexts/AuthContext"
 
 const AddNewFeed = prop => {
   const [button, setButton] = useState(false)
@@ -15,14 +16,40 @@ const AddNewFeed = prop => {
   const [authorsName, setAuthorsName] = useState("")
   const [tag, setTag] = useState("")
   const [uniqueTag, setUniqueTag] = useState("")
-
-  console.log("hhhhhhhh")
+  const { currentUser } = useAuth()
+  const [items, setItems] = useState([])
+  const [userUID, setUserUID] = useState("")
 
   const change = () => {
     setButton(true)
+    {
+      listItem.map(item => {
+        if (item.userUID === currentUser.uid) {
+          setAuthorsName(item.username)
+          setUserUID(item.userUID)
+        }
+      })
+    }
   }
-
-  console.log(prop)
+  const useItems = () => {
+    useEffect(() => {
+      const unsubscribe = firebase
+        .firestore() //access firestore
+        .collection("users") //access "items" collection
+        .onSnapshot(snapshot => {
+          //You can "listen" to a document with the onSnapshot() method.
+          const listItems = snapshot.docs.map(doc => ({
+            //map each document into snapshot
+            id: doc.id, //id and data pushed into items array
+            ...doc.data(), //spread operator merges data to id.
+          }))
+          setItems(listItems) //items is equal to listItems
+        })
+      return () => unsubscribe()
+    }, [])
+    return items
+  }
+  const listItem = useItems()
 
   const onSubmit = () => {
     firebase
@@ -36,6 +63,7 @@ const AddNewFeed = prop => {
         authorsName,
         tag,
         uniqueTag,
+        userUID,
       })
       .then(
         () => setTitle(""),
@@ -44,7 +72,8 @@ const AddNewFeed = prop => {
         setBody(""),
         setAuthorsName(""),
         setTag(""),
-        setUniqueTag("")
+        setUniqueTag(""),
+        setUserUID("")
       )
     return navigate("/profile")
   }
@@ -90,18 +119,7 @@ const AddNewFeed = prop => {
         ></textarea>
       </div>
       <div className={styles.charNumber}>Maximum 70000 characters</div>
-      <div className={styles.textareaDescription}>Author's name</div>
-      <div className={styles.text}>
-        <textarea
-          value={authorsName}
-          onChange={e => setAuthorsName(e.target.value)}
-          placeholder="Insert author's name"
-          maxLength="160"
-          required
-          className={styles.textarea2}
-        ></textarea>
-      </div>
-      <div className={styles.charNumber}>Maximum 160 characters</div>
+
       <div className={styles.textareaDescription}>Tags</div>
       <div className={styles.text}>
         <textarea
