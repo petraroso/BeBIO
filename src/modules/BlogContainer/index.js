@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import Img from "gatsby-image"
+import { Link } from "gatsby"
 import styles from "./style.module.css"
 import BlogRating from "../../components/Images/BlogRating"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -32,38 +31,6 @@ const BlogContainer = ({ tags }) => {
         setItems(listItems) //items is equal to listItems
       })
   }, [])
-
-  const data = useStaticQuery(graphql`
-    query {
-      allContentfulBlogFeed(limit: 20) {
-        nodes {
-          summary {
-            internal {
-              content
-            }
-          }
-          body {
-            raw
-          }
-          title
-          slug
-          tags
-          authorsName
-          updatedAt
-          coverImage {
-            fluid(quality: 90, maxWidth: 1920) {
-              src
-              srcSet
-              srcSetWebp
-              srcWebp
-              base64
-              aspectRatio
-            }
-          }
-        }
-      }
-    }
-  `)
 
   let filtered = (
     <>
@@ -100,40 +67,6 @@ const BlogContainer = ({ tags }) => {
             )
           })
         : ""}
-      {data.allContentfulBlogFeed.nodes.map(node => {
-        return (
-          <div className={styles.container}>
-            <div className={styles.post}>
-              <div className={styles.imageDiv}>
-                <Link to={`/blogPosts/${node.slug}`}>
-                  <Img fluid={node.coverImage.fluid} className={styles.image} />
-                </Link>
-              </div>
-              <div className={styles.body}>
-                <div className={styles.tags}> #{node.tags}</div>
-                <div>
-                  <Link to={`/blogPosts/${node.slug}`}>
-                    <h2>{node.title}</h2>
-                  </Link>
-                </div>
-                <section className={styles.blog2}>
-                  <div className={styles.text}>
-                    <div> {node.summary.internal.content} </div>
-                  </div>
-                  <div className={styles.ratingandname}>
-                    <div className={styles.rating}>
-                      <BlogRating />
-                    </div>
-                    <div className={styles.author}>
-                      <h4 className={styles.name}>{node.authorsName}</h4>
-                    </div>
-                  </div>
-                </section>
-              </div>
-            </div>
-          </div>
-        )
-      })}
     </>
   )
 
@@ -184,46 +117,6 @@ const BlogContainer = ({ tags }) => {
               }
             })
           : ""}
-        {data.allContentfulBlogFeed.nodes.map(node => {
-          if (node.tags.startsWith(tags)) {
-            check = 1
-            return (
-              <div className={styles.container}>
-                <div className={styles.post}>
-                  <div className={styles.imageDiv}>
-                    <Link to={`/blogPosts/${node.slug}`}>
-                      <Img
-                        fluid={node.coverImage.fluid}
-                        className={styles.image}
-                      />
-                    </Link>
-                  </div>
-                  <div className={styles.body}>
-                    <div className={styles.tags}> #{node.tags}</div>
-                    <div>
-                      <Link to={`/blogPosts/${node.slug}`}>
-                        <h2>{node.title}</h2>
-                      </Link>
-                    </div>
-                    <section className={styles.blog2}>
-                      <div className={styles.text}>
-                        <div> {node.summary.internal.content} </div>
-                      </div>
-                      <div className={styles.ratingandname}>
-                        <div className={styles.rating}>
-                          <BlogRating />
-                        </div>
-                        <div className={styles.author}>
-                          <h4 className={styles.name}>{node.authorsName}</h4>
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </div>
-              </div>
-            )
-          }
-        })}
       </>
     )
     if (check === 0) {
