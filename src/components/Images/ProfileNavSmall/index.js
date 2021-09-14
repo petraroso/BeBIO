@@ -24,7 +24,7 @@ const {currentUser} = useAuth()
     return () => unsubscribe()
   }, [])
 
- console.log(items)
+
 
   let firstVar = (
     <>

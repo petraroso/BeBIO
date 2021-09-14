@@ -41,18 +41,13 @@ const ProfileAbout = ({ name, total }) => {
     }, [])
     return items
   }
-  const listItem = useItems()
-  console.log(items)
-  console.log(currentUser.email)
-  
+  const listItem = useItems()  
 
   let firstVar = (
     <>
       {listItem.map(item => {
         if (item.email === currentUser.email) {
-          console.log(item.userAbout)
-          console.log(item.profileImage)
-          return (
+           return (
             <section className={styles.form}>
               <div className={styles.firstDiv}>
                 <div className={styles.pictureDiv}>

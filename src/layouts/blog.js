@@ -75,8 +75,6 @@ const BlogFeed = ({ pageContext }) => {
     setCheck(false)
   }
 
-  console.log("ođe")
-  console.log(items)
   return (
     <HeaderFooterLayout>
       <main className={styles.container}>

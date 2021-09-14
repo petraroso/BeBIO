@@ -11,7 +11,6 @@ const ProfileAll = () => {
   //const { currentUser } = useAuth()
   let user = myLocalStorage.getItem("loggedIn")
   const url = typeof window !== "undefined" ? window.location.pathname : ""
-  // console.log("path" + url)
 
   const useItems = () => {
     const [items, setItems] = useState([]) //useState() hook, sets initial state to an empty array

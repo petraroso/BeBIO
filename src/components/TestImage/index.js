@@ -27,7 +27,7 @@ export default class App extends Component {
       })
     }
 
-    // console.log(e.target.files[0])
+ 
   }
 
   handleUpload = () => {
@@ -60,8 +60,6 @@ export default class App extends Component {
   }
 
   render() {
-    console.log("parent")
-    console.log(this.state.update)
     return (
       <div className={styles.container}>
         <div className={styles.wholeBlog}>

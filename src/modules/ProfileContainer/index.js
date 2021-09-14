@@ -38,7 +38,6 @@ const ProfileContainer = ({ name }) => {
   const changeSlug = property => {
     firebase.firestore().collection("posts").doc(property).delete()
   }
-  console.log(items)
 
   let firstVar
 
@@ -56,8 +55,6 @@ const ProfileContainer = ({ name }) => {
       </div>
       <section className={styles.container}>
         {items.map(item => {
-          console.log(currentUser.uid)
-          console.log(item.userUID)
           if (item.userUID === currentUser.uid) {
             count = count + 1
             return (
