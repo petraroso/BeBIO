@@ -1,9 +1,10 @@
-  .fluid{
-    border-radius: 90%;
-    height: 50px;
-    width: 50px;
-  }
- /* @media only screen and (max-width: 600px) {
+.fluid {
+  object-fit: cover;
+  border-radius: 90%;
+  height: 50px;
+  width: 50px;
+}
+/* @media only screen and (max-width: 600px) {
     .titleImage {
       height: 100px;
       width: 100px;

@@ -17,6 +17,7 @@
 }
 
 .image {
+  object-fit: cover;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   z-index: -1;
@@ -145,20 +146,24 @@
   }
 }
 @media only screen and (max-width: 600px) {
+  .container {
+    min-height: 240px;
+    margin-bottom: 20px;
+  }
   .post {
     display: grid;
     margin-bottom: 25px;
-  }
-  .imageDiv {
-    grid-column: 1/2;
-    grid-row: 1/2;
-    width: 100%;
-    z-index: -10;
-    opacity: 30%;
+    position: relative;
   }
   .image {
     border-radius: 20px;
-    height: 220px;
+    height: 100%;
+    width: 100%;
+    z-index: -10;
+    opacity: 30%;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   .body {
     grid-column: 1/2;

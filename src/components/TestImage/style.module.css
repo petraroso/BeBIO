@@ -89,6 +89,7 @@
   padding: 12px;
 }
 .pictureHolder {
+  object-fit: cover;
   border-radius: 20px;
 }
 .picHolderDiv {
