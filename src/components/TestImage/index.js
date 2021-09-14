@@ -26,8 +26,6 @@ export default class App extends Component {
         image: e.target.files[0],
       })
     }
-
- 
   }
 
   handleUpload = () => {
@@ -69,7 +67,7 @@ export default class App extends Component {
             onClick={() => this.setState({ update: true })}
           >
             <FontAwesomeIcon icon={faImage} size="1x" color="#11111" />
-            &nbsp;&nbsp;update profile picture
+            &nbsp;&nbsp;Upload post image
           </button>
           {this.state.update ? (
             <section className={styles.field}>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import firebase from "../../components/Firebase/firebase"
 //mport { storageRef } from "../../components/Firebase/firebase"
-import {  Link } from "gatsby"
+import { Link } from "gatsby"
 //import Img from "gatsby-image"
 import styles from "./style.module.css"
 //import {useHistory, useParams} from "react-router-dom"
@@ -70,10 +70,11 @@ const ProfileContainer = ({ name }) => {
                     />
                   </div>
                   <Link to={`/profilePosts/${item.id}`}>
+                    <div className={styles.imageDiv}>
                     <img
                       src={item.imageURL.prop}
                       className={styles.image}
-                    ></img>
+                    ></img></div>
                   </Link>
                   <div className={styles.body}>
                     <div className={styles.title}>
@@ -83,7 +84,7 @@ const ProfileContainer = ({ name }) => {
                     </div>
 
                     <div className={styles.textContainer}>
-                      <p className={styles.text}>{item.body}</p>
+                      <p className={styles.text}>{item.summary}...</p>
                     </div>
                   </div>
                 </div>

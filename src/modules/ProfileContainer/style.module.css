@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 6%;
+  column-gap: 3vw;
 
   margin-top: 1%;
   margin-left: 20%;
@@ -10,11 +10,10 @@
 }
 
 .profilePost {
-  
-  display: inline-block;
- /* position: relative;
+  width: 28vw;
+  position: relative;
   margin-bottom: 40px;
-  padding-bottom: 30px;*/
+  padding-bottom: 20px;
   border-radius: 20px;
   box-shadow: 0px 0px 8px 0 lightgray;
   transition: transform 0.2s;
@@ -29,11 +28,15 @@
   transition: all 0.5s ease-in-out;
   transform: scale(1.03);
 }
+.imageDiv {
+}
 .image {
+  object-fit: cover;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   z-index: -1;
- 
+  height: 250px;
+  width: 28vw;
 }
 .trashIcon {
   position: absolute;
@@ -115,6 +118,10 @@
   }
   .profilePost {
     padding-bottom: 10px;
+    width: 37vw;
+  }
+  .image {
+    width: 37vw;
   }
   .title {
     margin-left: 10px;
@@ -143,9 +150,10 @@
     margin-right: 10px;
   }
   .profilePost {
-    width: auto;
+    width: 100%;
   }
   .image {
     height: 200px;
+    width: 100%;
   }
 }
