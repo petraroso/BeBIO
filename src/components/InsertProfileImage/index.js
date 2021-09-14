@@ -63,7 +63,7 @@ export default class App extends Component {
             <div className={styles.uploadButtonsDiv}>
               <div className={styles.buttonDiv}>
                 <label className={styles.buttonUpload1}>
-                  Choose file
+                  Choose&nbsp;file
                   <input type="file" id="file" onChange={this.handleChange} />
                 </label>
               </div>

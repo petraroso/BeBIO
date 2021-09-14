@@ -5,7 +5,7 @@ import { getStorage } from "firebase/storage"
 import AddNewFeed from "../AddNewFeed"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faImage } from "@fortawesome/free-solid-svg-icons"
-
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
 
 export default class App extends Component {
   constructor() {
@@ -14,13 +14,12 @@ export default class App extends Component {
       image: null,
       progress: 0,
       downloadURL: null,
-      button:false,
-      title:"",
-      update:false,
+      button: false,
+      title: "",
+      update: false,
     }
   }
-  
-  
+
   handleChange = e => {
     if (e.target.files[0]) {
       this.setState({
@@ -36,8 +35,6 @@ export default class App extends Component {
     var storage = firebase.storage()
     var storageRef = storage.ref()
     var uploadTask = storageRef.child("folder/" + file.name).put(file)
-
-    
 
     uploadTask.on(
       firebase.storage.TaskEvent.STATE_CHANGED,
@@ -62,61 +59,71 @@ export default class App extends Component {
     )
   }
 
- 
-
   render() {
-    console.log("parent");
-    console.log(this.state.update);
+    console.log("parent")
+    console.log(this.state.update)
     return (
       <div className={styles.container}>
-      <div className={styles.wholeBlog}>
-      <h2 className={styles.add}>Add new post</h2>
-        <button className={styles.insert} onClick={() => this.setState({update:true})}>
+        <div className={styles.wholeBlog}>
+          <h2 className={styles.add}>Add new post</h2>
+          <button
+            className={styles.insert}
+            onClick={() => this.setState({ update: true })}
+          >
             <FontAwesomeIcon icon={faImage} size="1x" color="#11111" />
             &nbsp;&nbsp;update profile picture
           </button>
-      {this.state.update? 
-      <section className={styles.field}>
-        <div className={styles.buttonDiv}>
-        <label className = {styles.buttonUpload}>
-          Choose file
-          <input type="file" id="file" onChange={this.handleChange} />
-        </label>
+          {this.state.update ? (
+            <section className={styles.field}>
+              <div className={styles.uploadButtonsDiv}>
+                <div className={styles.buttonDiv1}>
+                  <label className={styles.buttonUpload}>
+                    Choose&nbsp;file
+                    <input type="file" id="file" onChange={this.handleChange} />
+                  </label>
+                </div>
+                <div className={styles.arrowIcon}>
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    size="2x"
+                    color="#808080"
+                  />
+                </div>
+                <div className={styles.buttonDiv}>
+                  <button
+                    className={styles.buttonUpload}
+                    onClick={this.handleUpload}
+                  >
+                    Upload
+                  </button>
+                </div>
+              </div>
+              <div className={styles.picHolderDiv}>
+                <img
+                  className={styles.pictureHolder}
+                  src={
+                    this.state.downloadURL ||
+                    "https://via.placeholder.com/260x350"
+                  }
+                  alt="Uploaded Images"
+                  height="260"
+                  width="350"
+                />
+              </div>
+
+              <div className={styles.progress}>
+                <span>Uploaded </span>
+                {this.state.progress}
+                <span>%</span>
+              </div>
+            </section>
+          ) : (
+            ""
+          )}
         </div>
 
-        <div className = {styles.picHolderDiv}>
-         <img
-          className={styles.pictureHolder}
-          src={this.state.downloadURL || "https://via.placeholder.com/150x150"}
-          alt="Uploaded Images"
-          height="150"
-          width="150"
-
-        />
-        </div>
-        
-        <div className = {styles.progress}>
-        <span>Image uploaded... </span>
-        {this.state.progress}
-        <span>%</span>
-        </div>
-
-        <div className={styles.buttonDiv}>
-        <button className={styles.buttonUpload} onClick={this.handleUpload}>
-          Upload
-        </button>
-        </div>
-        </section> : ""}
-        
-        </div>
-
-        <AddNewFeed prop={this.state.downloadURL}
-         />
-        
-      
-      
+        <AddNewFeed prop={this.state.downloadURL} />
       </div>
     )
   }
 }
-;
