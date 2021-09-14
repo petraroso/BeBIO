@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react"
 import firebase from "../Firebase/firebase"
-import { navigate } from "gatsby"
+import { navigate, Link } from "gatsby"
 import styles from "./style.module.css"
 import { myLocalStorage } from "../../helper"
 import { useAuth } from "../Contexts/AuthContext"
@@ -120,7 +120,7 @@ const SignUpPage = () => {
       </form>
       <span className={styles.spanclass}>
         Already have an account?&nbsp;
-        <a href="http://localhost:8000/login">Log in</a>
+        <Link to={"/login"}>Log in</Link>
       </span>
 
       <div className={styles.area}>

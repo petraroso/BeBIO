@@ -48,9 +48,9 @@ const ProfileContainer = ({ name }) => {
       <hr className={styles.line}></hr>
       <div className={styles.con}>
         <div className={styles.buttonPosition}>
-          <a href="http://localhost:8000/addNew">
+          <Link to = {"/addNew"}>
             <button className={styles.button1}>Add new post</button>
-          </a>
+          </Link>
         </div>
       </div>
       <section className={styles.container}>

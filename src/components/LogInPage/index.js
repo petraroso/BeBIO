@@ -1,19 +1,13 @@
 import React, { useState, useRef } from "react"
-import firebase from "../Firebase/firebase"
-import { navigate } from "gatsby"
+import { navigate, Link } from "gatsby"
 import styles from "./style.module.css"
 import { myLocalStorage } from "../../helper"
 import { useAuth } from "../Contexts/AuthContext"
 
 const LogInPage = () => {
   const [username, setUserName] = useState()
-  //const [password, setPassword] = useState()
-  //const [email, setEmail] = useState("")
-  //const [error, setError] = useState(false)
-  //const [loading, setLoading] = useState(false)
-
+ 
   const emailRef = useRef()
-  //const usernameRef = useRef()
   const passwordRef = useRef()
   const { login } = useAuth()
   const [passwordError, setPasswordError] = useState("")
@@ -37,9 +31,6 @@ const LogInPage = () => {
   return (
     <main
       className={styles.background}
-      //onKeyDown={key => {
-      //if (key.key === "Enter") return submit()
-      // }}
     >
       {passwordError}
       <form className={styles.container} onSubmit={handleSubmit}>
@@ -50,7 +41,6 @@ const LogInPage = () => {
             name="email"
             type="email"
             ref={emailRef}
-            //onChange={e => setEmail(e.target.value)}
           ></input>
         </section>
 
@@ -58,7 +48,6 @@ const LogInPage = () => {
           <label htmlFor="username">Username</label>
           <input
             name="username"
-            //ref={usernameRef}
             required
             onChange={e => setUserName(e.target.value)}
           />
@@ -70,7 +59,6 @@ const LogInPage = () => {
             name="password"
             type="password"
             ref={passwordRef}
-            //onChange={e => setPassword(e.target.value)}
           />
         </section>
 
@@ -86,7 +74,7 @@ const LogInPage = () => {
             className={styles.loginButton}
             type="submit"
             disabled={passwordLoading}
-            //onClick={() => submit()}
+            
           >
             {passwordLoading ? "Loading..." : "Log in"}
           </button>
@@ -94,7 +82,7 @@ const LogInPage = () => {
       </form>
       <span className={styles.spanclass}>
         Don't have an account?&nbsp;
-        <a href="http://localhost:8000/signup">Sign up</a>
+        <Link to = {"/signup"}>Sign up</Link>
       </span>
 
       <div className={styles.area}>

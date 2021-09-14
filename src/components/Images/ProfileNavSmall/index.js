@@ -28,8 +28,8 @@ const {currentUser} = useAuth()
 
   let firstVar = (
     <>
-    {items.map(item=>{
-      if(item.userUID === currentUser.uid){
+    {items? items.map(item=>{
+      if(item.userUID === currentUser.uid ){
         return (
           <img
           src = {item.profileImage || "https://via.placeholder.com/50x50"}
@@ -40,7 +40,14 @@ const {currentUser} = useAuth()
           ></img>
         )
       }
-    })}
+    }) : <img
+    src = {"https://via.placeholder.com/50x50"}
+    className={styles.fluid}
+    alt="Profile picure"
+    height="50"
+    width="50"
+    ></img> }
+    
     </>
   )
   return <>{firstVar}</>
