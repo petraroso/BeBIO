@@ -8,7 +8,7 @@ import { useAuth } from "../../components/Contexts/AuthContext"
 import firebase from "../../components/Firebase/firebase"
 
 const ProfileAll = () => {
-  const { currentUser } = useAuth()
+  //const { currentUser } = useAuth()
   let user = myLocalStorage.getItem("loggedIn")
   const url = typeof window !== "undefined" ? window.location.pathname : ""
   // console.log("path" + url)
@@ -33,12 +33,6 @@ const ProfileAll = () => {
     return items
   }
   const listItem = useItems()
-
-  listItem.map(item => {
-    if (item.email === currentUser.email) {
-      user = item.username
-    }
-  })
 
   if (url === "/profile") {
     if (!user) {

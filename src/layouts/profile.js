@@ -3,7 +3,7 @@ import { renderRichText } from "gatsby-source-contentful/rich-text"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
 import BlogPostBody from "../../src/components/BlogPostBody"
-import ProfileNav from "../components/Images/ProfileNav"
+//import ProfileNav from "../components/Images/ProfileNav"
 import ProfileImage1 from "../components/Images/ProfileImage1"
 import ProfileImage2 from "../components/Images/ProfileImage2"
 import ProfileImage3 from "../components/Images/ProfileImage3"
@@ -74,7 +74,7 @@ const ProfilePost = ({ pageContext }) => {
             </div>
           </section>
           <BlogPostBody
-            profileImage={<ProfileNav prop = {userAcc}/>}
+           // profileImage={<ProfileNav prop = {userAcc}/>}
             authorsName = {userAcc}
             tags={tags}
             userAcc={userAcc}

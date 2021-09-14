@@ -31,7 +31,7 @@ const SignUpPage = () => {
       setPasswordError("")
       setPasswordLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
-    //  myLocalStorage.setItem("loggedIn", username)
+   //  myLocalStorage.setItem("loggedIn", username)
 
       firebase
         .firestore()

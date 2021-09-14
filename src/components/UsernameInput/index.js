@@ -34,6 +34,7 @@ const UsernameInput = () => {
 
   async function handleSubmit(e) {
     e.preventDefault()
+    myLocalStorage.setItem("loggedIn", username)
 
     listItem.map(item => {
       if (item.email === currentUser.email && username !== "") {

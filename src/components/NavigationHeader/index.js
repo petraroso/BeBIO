@@ -170,7 +170,7 @@ const NavigationHeader = ({ activeTab }) => {
         <div className={styles.profileNav}>
           {pic ? (
             <Link to={"/profile"}>
-              <ProfileNavSmall prop={pic} />{" "}
+              <ProfileNavSmall  />{" "}
             </Link>
           ) : (
             <Link to={`/login`}>

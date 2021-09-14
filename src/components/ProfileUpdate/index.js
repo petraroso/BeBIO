@@ -6,7 +6,7 @@ import { myLocalStorage } from "../../helper"
 import { useAuth } from "../Contexts/AuthContext"
 
 const ProfileUpdate = () => {
-  const [username, setUserName] = useState(myLocalStorage.getItem("loggedIn"))
+  //const [username, setUserName] = useState(myLocalStorage.getItem("loggedIn"))
   //const [password, setPassword] = useState()
   //const [email, setEmail] = useState("")
   //const [error, setError] = useState(false)
