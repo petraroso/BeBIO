@@ -1,11 +1,11 @@
 import React from "react"
 import HeaderFooterLayout from "../layouts/headerFooter"
-import TestImage from "../components/TestImage"
+import InsertPostImage from "../components/InsertPostImage"
 
-const bookmarks = () => (
+const addNew = () => (
   <HeaderFooterLayout>
-    <TestImage />
+    <InsertPostImage />
   </HeaderFooterLayout>
 )
 
-export default bookmarks
+export default addNew

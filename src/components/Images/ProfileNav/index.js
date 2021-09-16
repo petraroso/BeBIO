@@ -8,7 +8,7 @@ const ProfileNav = ({prop}) => {
     <img
     src = {prop || "https://via.placeholder.com/150x150"}
       className={styles.titleImage}
-      alt="Profile image"
+      alt="Profile"
       height="150"
       width="150"
     ></img>

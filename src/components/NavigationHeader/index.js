@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import Navigation from "../Navigation"
-
 import PILoggedOut from "../Images/PILoggedOut"
 import ProfileNavSmall from "../Images/ProfileNavSmall"
 import styles from "./style.module.css"
@@ -10,9 +9,7 @@ import { IoClose } from "react-icons/io5"
 import { Link } from "gatsby"
 import { navs as navTabs } from "../../constants/const"
 import LogoImage from "../Images/LogoImage"
-import { useAuth } from "../Contexts/AuthContext"
-import { set } from "lodash"
-import { navigate } from "@reach/router"
+
 
 //import { colors } from "react-select/src/theme"
 

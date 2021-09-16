@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import firebase from "../Firebase/firebase"
 import styles from "./style.module.css"
-import { getStorage } from "firebase/storage"
+//import { getStorage } from "firebase/storage"
 import AddNewFeed from "../AddNewFeed"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faImage } from "@fortawesome/free-solid-svg-icons"

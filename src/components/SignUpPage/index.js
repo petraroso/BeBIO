@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react"
 import firebase from "../Firebase/firebase"
 import { navigate, Link } from "gatsby"
 import styles from "./style.module.css"
-import { myLocalStorage } from "../../helper"
+//import { myLocalStorage } from "../../helper"
 import { useAuth } from "../Contexts/AuthContext"
 
 const SignUpPage = () => {

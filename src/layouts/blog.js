@@ -16,7 +16,7 @@ import styles from "./blog.module.css"
 import HeaderFooterLayout from "../layouts/headerFooter"
 import { myLocalStorage } from "../helper"
 import { library } from "@fortawesome/fontawesome-svg-core"
-import firebase from "../components/Firebase/firebase"
+//import firebase from "../components/Firebase/firebase"
 
 library.add(
   reg,

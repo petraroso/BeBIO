@@ -7,8 +7,6 @@ import { useAuth } from "../Contexts/AuthContext"
 
 const AddNewFeed = prop => {
   const [button, setButton] = useState(false)
-  const [check, setCheck] = useState(false)
-
   const [title, setTitle] = useState("")
   const [imageURL, setImageURL] = useState(null)
   const [summary, setSummary] = useState("")
